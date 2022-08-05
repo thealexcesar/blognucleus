@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @post.body %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @post.name %>
+</p>
+<br>
+<br>
+<%= render 'posts/partials/comments', comments: @comments %>
+
+<!--<%#= link_to 'Edit', edit_post_path(@post) %> |-->
+<%#= link_to 'Back', posts_path %>

@@ -1,0 +1,22 @@
+<% if comments.count > 0 %>
+  <% comments.each do |comment|
+    # side = "left"
+    # side = 'right' if my_perfil?(@current_user, comment.user)
+  %>
+    <div class="row mt20 margin-nil">
+      <div class="chat-discussion chat-discussion-support">
+        <div class="chat-message">
+          <!--          <img class="message-avatar" id="imagem-perfil" src="<%#= image_path(media.nil? ? "logo-temp.png" : media.get_aws_url) %>" alt="Avatar">-->
+          <div class="message">
+            <a class="message-author" href="#"> <%= comment.name %> </a>
+            <span class="message-date"> <%= comment&.created_at %> </span>
+            <span class="message-content"> <%= comment&.body %> </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  <%
+    end
+  end
+  %>
+<h1>Nenhum comentario</h1>
