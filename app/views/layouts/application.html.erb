@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blognucleus</title>
+    <title>Blog Nucleus</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,8 +10,18 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <%= render "shared/system_alerts" %>
+
+    <header class="bg-purple text-white d-flex bg-danger border-bottom border-secondary mb-3 shadow">
+      <%= render 'shared/header' %>
+    </header>
+
+    <main> <%= yield %> </main>
+
+    <footer class="bg-purple text-white w-100 py-3 d-flex justify-content-between align-items-center">
+      <div class="py-3 d-flex justify-content-between container-fluid">
+        <%= render 'shared/footer' %>
+      </div>
+    </footer>
   </body>
 </html>

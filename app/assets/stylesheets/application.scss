@@ -16,3 +16,38 @@
 
 @import "bootstrap";
 @import "font-awesome";
+
+
+
+body {
+  .main, div, .header, main, .footer {
+    overflow-x: hidden;
+  }
+}
+
+a {
+  text-decoration: none;
+  list-style: none;
+  color: inherit;
+}
+
+.forms {
+  background-color: #eaeaea;
+}
+
+header {
+  height: 10vh;
+}
+
+main {
+  height: 80vh;
+}
+
+footer {
+  background-color: #2E2F30;
+  height: 10vh;
+  position: absolute;
+  bottom: 0;
+}
+
+.bg-purple { background-color: #380a54!important; }

@@ -113,6 +113,9 @@ before_action :set_post, only: [ :show, :edit, :update, :create_comment, :destro
 
 ```
 ----
+```bash
+rails generate devise User
+```
 
 Todo:
 

@@ -1,7 +1,20 @@
+  <%# unless signed_in? %>
+  <%#= link_to 'Fazer login', new_user_session_path %>
+  <%# else %>
+  <!--          <h1>Voce está logado</h1>-->
+  <%#= link_to 'Sair', destroy_user_session_path, method: :delete %>
+  <%# end %>
+  <!--        <li>-->
+  <%#= link_to "Minha conta", admin_user_path(@current_user), class: "dropdown-item" %>
+  <!--        </li>-->
+  <!--        <li>-->
+  <%#= link_to "Sair", logout_admin_users_url, class: "dropdown-item"%>
+  <!--        </li>-->
+
+  <!--      </ul>-->
+<h1>Blog</h1>
+
 <p id="notice"><%= notice %></p>
-
-<h1>Posts</h1>
-
 <table>
   <thead>
     <tr>
@@ -26,6 +39,5 @@
   </tbody>
 </table>
 
-<br>
-
 <%= link_to 'New Post', new_post_path %>
+

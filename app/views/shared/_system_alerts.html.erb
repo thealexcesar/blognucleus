@@ -1,0 +1,21 @@
+<%
+  alert_class = ""
+  flash.each do |type, message|
+    case type.to_s
+    when "success"
+      alert_class = "alert-success"
+    when "error"
+      alert_class = "alert-danger"
+    when "alert"
+      alert_class = "alert-warning"
+    when "notice"
+      alert_class = "alert-info"
+    else
+      alert_class = "alert-secondary"
+    end
+%>
+  <div class="alert <%= alert_class %>">
+    <%= message %>
+    <button type="button" class="btn-close float-right" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>

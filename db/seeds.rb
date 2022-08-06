@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+admin = User.new(email: 'admin@nucleus.com.br', password: '123123', password_confirmation: '123123')
+puts admin.save ? "admin criado." : "Erro ao criar admin #{admin.errors.full_messages}"
