@@ -73,7 +73,7 @@ class PostsController < ApplicationController
       @post = Post.find_by_id params[:id]
     end
     def post_params
-      params.require(:post).permit(:title, :body, :name)
+      params.require(:post).permit(:title, :body, :name, :user_id)
     end
     def comment_params
       params.require(:comment).permit(:name, :body, :post_id)

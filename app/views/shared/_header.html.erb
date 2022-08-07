@@ -1,9 +1,33 @@
-<div class="container-fluid d-flex align-items-center">
-  <%= image_tag('logo.png', width:'80', alt:'Nucleus') %>
-  <div class="d-flex justify-content-around col-3">
-    <%= link_to "home", root_path %>
-    <%= link_to "Blog", root_path %>
-    <%= link_to "Contato", root_path %>
-  </div>
-  <input class="col-4 btn ms-auto btn bg-white" style="text-align: left" placeholder="Pesquisar"> <%# FIXME! %>
+<div class="container-fluid">
+  <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+    <b class="logo-icon"><%= image_tag('logo.png', width:'80', alt:'Nucleus') %></b>
+    <div class="col-lg-4 col-md-3 col-xs-2 d-flex justify-content-around" data-logobg="skin6">
+        <%= link_to "HOME", root_path %>
+        <%= link_to "BLOG", root_path %>
+        <%= link_to "HOME", root_path %>
+      <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+    </div>
+    <div class="navbar-collapse collapse" id="" data-navbarbg="">
+      <ul class="navbar-nav ms-auto d-flex align-items-center">
+        <li class=" in">
+          <form role="search" class="app-search d-none d-md-block me-3">
+            <input type="text" placeholder="Search..." class="form-control mt-0">
+            <a href="" class="active">
+              <i class="fa fa-search"></i>
+            </a>
+          </form>
+        </li>
+        <li>
+          <% if signed_in? %>
+            <a class="profile-pic col-lg-2" href="#">
+              <img src="<%= image_path(current_user.nil? ? "user-solid.svg" : "logo.png") %>" alt="user-img" width="36" class="img-circle">
+              <span class="text-white font-medium"><%= current_user&.name %></span>
+            </a>
+          <% else %>
+            <%= link_to "Login", root_path, class: 'btn btn-primary' %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </div>
