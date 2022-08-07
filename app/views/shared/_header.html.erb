@@ -7,7 +7,7 @@
         <%= link_to "HOME", root_path %>
       <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
     </div>
-    <div class="navbar-collapse collapse" id="" data-navbarbg="">
+    <div class="navbar-collapse collapse" id="">
       <ul class="navbar-nav ms-auto d-flex align-items-center">
         <li class=" in">
           <form role="search" class="app-search d-none d-md-block me-3">
@@ -20,7 +20,7 @@
         <li>
           <% if signed_in? %>
             <a class="profile-pic col-lg-2" href="#">
-              <img src="<%= image_path(current_user.nil? ? "user-solid.svg" : "logo.png") %>" alt="user-img" width="36" class="img-circle">
+              <img src="<%= image_path(current_user.nil? ? "logo.png" : "user-solid.svg") %>" alt="user-img" width="36" class="img-circle">
               <span class="text-white font-medium"><%= current_user&.name %></span>
             </a>
           <% else %>

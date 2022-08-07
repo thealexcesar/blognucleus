@@ -113,8 +113,24 @@ before_action :set_post, only: [ :show, :edit, :update, :create_comment, :destro
 
 ```
 ----
+
 ```bash
 rails generate devise User
+```
+```bash
+# Add foreign-key 'user' em Post 
+rails g migration AddUserToPosts user:references
+```
+```bash
+# Add coluna 'name' em User
+rails g migration AddColumnToUsers name:string
+```
+```bash
+# Remove 'name' in Post
+rails g migration RemoveColumnNameFromPost
+```
+# Add 'status' to Post
+rails g migration AddStatusToPost status:integer
 ```
 
 Todo:

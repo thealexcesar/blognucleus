@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   # ====================================================================================================================
   def show
     @comment = @post.comments.new unless @post.blank?
-    puts "comment_teste#{@post.comments.new.inspect}"
+    # puts "comment_teste#{@post.comments.new.inspect}"
     @comments = Comment.where(post_id: @post).order("created_at ASC")
   end
   # ====================================================================================================================
@@ -21,6 +21,7 @@ class PostsController < ApplicationController
   # ====================================================================================================================
   def create
     @post = Post.new(post_params)
+
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
@@ -73,7 +74,7 @@ class PostsController < ApplicationController
       @post = Post.find_by_id params[:id]
     end
     def post_params
-      params.require(:post).permit(:title, :body, :name, :user_id)
+      params.require(:post).permit(:title, :body, :name, :user_id, :status)
     end
     def comment_params
       params.require(:comment).permit(:name, :body, :post_id)

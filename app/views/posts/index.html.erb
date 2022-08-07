@@ -3,16 +3,16 @@
     <h1><%= t('activerecord.models.post') %></h1>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= post.name %></td>
-        <td><%= link_to t('general.show'), post %></td>
-        <td><%= link_to t('general.edit'), edit_post_path(post) %></td>
-        <td><%= link_to t('general.delete'), post, method: :delete, data: { confirm: t('general.messages.confirm') } %></td>
+        <p><%= post&.title %></p>
+        <p><%= post&.body %></p>
+<!--        <p><%#= post.user&.name %></p>-->
+        <span><%= link_to t('general.show'), post %></span>
+        <span><%= link_to t('general.edit'), edit_post_path(post) %></span>
+        <span><%= link_to t('general.delete'), post, method: :delete, data: { confirm: t('general.messages.confirm') } %></span>
       </tr>
     <% end %>
+    <%= link_to new_model, new_post_path %>
   </div>
 </div>
 
-<%= link_to new_model, new_post_path %>
 

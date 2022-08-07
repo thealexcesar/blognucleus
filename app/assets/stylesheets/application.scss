@@ -35,7 +35,7 @@ header {
 .topbar {
   position: relative;
   z-index: 50;
-  background: $topbar;
+  background: $bar;
   height: $topbar-height;
   .navbar-collapse {
     padding: 0;
@@ -239,7 +239,7 @@ main {
 }
 
 footer {
-  background-color: #2E2F30;
+  background: $bar;
   height: 10vh;
   position: absolute;
   bottom: 0;
