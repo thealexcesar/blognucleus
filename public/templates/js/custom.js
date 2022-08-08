@@ -4,7 +4,7 @@ $(function() {
     $(".preloader").fadeOut();
     // this is for close icon when navigation open in mobile view
     $(".nav-toggler").on('click', function() {
-        $("#main-wrapper").toggleClass("show-sidebar");
+        $("#home-wrapper").toggleClass("show-sidebar");
         $(".nav-toggler i").toggleClass("ti-menu");
     });
     $(".search-box a, .search-box .app-search .srh-btn").on('click', function() {
@@ -24,9 +24,9 @@ $(function() {
     var setsidebartype = function() {
         var width = (window.innerWidth > 0) ? window.innerWidth : this.screen.width;
         if (width < 1170) {
-            $("#main-wrapper").attr("data-sidebartype", "mini-sidebar");
+            $("#home-wrapper").attr("data-sidebartype", "mini-sidebar");
         } else {
-            $("#main-wrapper").attr("data-sidebartype", "full");
+            $("#home-wrapper").attr("data-sidebartype", "full");
         }
     };
     $(window).ready(setsidebartype);

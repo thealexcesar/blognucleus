@@ -1,20 +1,22 @@
-<div class="mt-3 container d-flex justify-content-center">
-  <div class="container blog col-lg-9 col-md-10 col-sm-12 col-xs-12">
-    <h1 class="mt-4">BLOG</h1> <hr class="post-title margin-hr">
+<h1 class="mt-4">BLOG</h1>
+<!--<hr class="post-title margin-hr">-->
+<table class="table table-stripped">
+  <thead>
+    <tr>
+      <th><%= t('activerecord.attributes.post.title') %></th>
+      <th><%= t('activerecord.attributes.post.body') %></th>
+      <th><%= t('post.author') %></th>
+      <th colspan="3"><%= t('general.actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
     <% @posts.each do |post| %>
-      <div>
-
-        <p><%= post&.title %></p>
-        <span>
-          <%= truncate(post&.body, length: 300) %><br>
-          <%= link_to t('post.see_more'), post, class: 'text-purple' %>
-        </span>
-        <span class="pull-right">
-          <%= t('post.author') %>: <%= link_to post.user.name.nil? ? post.user&.email : post.user&.name, "#", class: 'text-purple' %>
-        </span>
-        <br>
-        <p><hr class="post margin-hr"></p>
-      </div>
-    <% end %>
-  </div>
-</div>
+    <tr>
+      <td><%= post&.title %></td>
+      <td><%= truncate(post&.body, length: 300) %></td>
+      <td><%= link_to post.user.name.nil? ? post.user&.email : post.user&.name, admin_user_path(post.user), class: 'text-purple' %></td>
+      <td>teste</td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>

@@ -1,0 +1,7 @@
+<nav>
+  <ul class="nav flex nav-pills">
+<!--    <li class="nav-item"><%#= link_to "HOME", admin_posts_url, class: "nav-link #{"active" if params[:controller] == "admin/home"}"%></li>-->
+    <li class="nav-item"><%= link_to "POST", admin_posts_url, class: "nav-link #{"active" if params[:controller] == "admin/posts"}"%></li>
+    <li class="nav-item"><%= link_to "USER", admin_users_url, class: "nav-link #{"active" if params[:controller] == "admin/users"}"%></li>
+  </ul>
+</nav>

@@ -1,26 +1,23 @@
 <div id="support_status_updated" class="row">
   <div class="col-xs-12 form-group">
-    <div class="form-group" style="margin-bottom:0;">
-      <h3>Teste novo comenteario</h3>
+    <hr>
+    <div class="form-group mt-4" style="margin-bottom:0;">
       <%= form_for(@comment, url: create_comment_posts_path, html: { class: "form valida-form", role: "form", method: "post"}) do |f| %>
         <%= f.hidden_field :post_id, value: @post.id %>
 
         <div class="form-group">
-          <label>Comentario</label>
-        <%= f.text_area :body, class: "form-control", placeholder: "BODY" %>
-        </div>
-        <div class="form-group">
-          <label>Nome</label>
-          <%= f.text_area :name, class: "form-control", placeholder: "BODY" %>
-        </div>
+          <%= f.label :body %>
+          <%= f.text_area :body, class: "form-control", placeholder: t('comment.enter.comment') %>
 
+          <%= f.label :name %>
+          <%= f.text_area :name, class: "form-control", placeholder: t('comment.enter.name') %>
 
-        <div class="form-group">
-          <%= f.submit t('btn.save'), class: "btn btn-sm btn-primary pull-right m-t-n-xs", value: t('btn.save') %>
+          <%= f.submit t('btn.save'), class: "btn btn-sm btn-primary pull-right m-t-n-xs mt-2", value: t('btn.save') %>
         </div>
         <div class="clearfix"></div>
+        <hr>
         <br><br>
-      <% end %>
+    <% end %>
     </div>
   </div>
 </div>

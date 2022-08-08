@@ -1,7 +1,20 @@
 class ApplicationController < ActionController::Base
-  # def current_user
-  #   @current_user ||= User.find_by_email_and_id(session[:email], session[:uid])
-  # rescue
-  #   false
-  # end
+  protected
+  def require_user
+    if current_user
+      true
+    else
+      redirect_to root_path, alert: I18n.t('general.error_message.denied')
+      return false
+    end
+  end
+  #=====================================================================================================================
+  def admin?
+    if current_user.user_type == "admin"
+      true
+    else
+      redirect_to root_path, alert: I18n.t('general.error_message.denied')
+      return false
+    end
+  end
 end

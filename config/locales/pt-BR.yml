@@ -14,7 +14,7 @@ pt-BR:
         body: "Texto"
         name: "Nome"
       comment:
-        body: "Conversa"
+        body: "Comentário"
         name: "Nome"
       errors:
         messages:
@@ -48,6 +48,12 @@ pt-BR:
     count:
       one: "%{amount} Comentário"
       other: "%{amount} Comentários"
+    enter:
+      comment: "Digite um comentário"
+      name: "Digite seu nome"
+    successfully:
+      created: "Comentario criado com sucesso"
+    to_comment: "Comentar"
   confirm:
     destroy: 'Tem certeza que deseja deletar?'
   date:
@@ -162,6 +168,17 @@ pt-BR:
     delete: "Apagar"
     edit: "Editar"
     editing: "Editando %{model}"
+    error_message:
+      denied: "Você não tem acesso a essa area."
+      error: "Erro"
+      error_at: "Erro em"
+      error_try_again: "Ocorreu um erro, tente novamente mais tarde."
+      register_error: "Erro ao cadastrar %{model}, tente novamente mais tarde."
+      register_error_try_again: "Ocorreu um erro ao cadastrar, tente novamente mais tarde."
+      edit_error: "Erro ao editar %{model}, Tente novamente mais tarde."
+      destroy_error: "Erro ao deletar %{model}."
+      error_please_try_again: "Ocorreu um erro. Por favor, tente novamente mais tarde."
+      unexpected: "Erro inesperado."
     exit: "Sair"
     fines: "Fluxo de multas"
     show_last: "Mostrar último"

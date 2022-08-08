@@ -10,7 +10,7 @@
             <img class="mt-0 message-avatar" id="imagem-perfil" src="<%= image_path("logo.png") %>" width="40px" height="40px" alt="Avatar">
             <div class="border border-1 rounded col-lg-11 p-2 message d-flex flex-column">
               <a class="message-author" href="#"> <%= comment.name %> </a>
-              <span class="message-date"> <%= comment&.created_at %> </span>
+              <span class="message-date"> <%= l(comment&.created_at, format: :long) %> </span>
               <p class="message-content mt-3"> <%= comment&.body %> </p>
             </div>
           </div>

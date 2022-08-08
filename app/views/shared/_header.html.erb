@@ -4,13 +4,28 @@
     <%
       url_path = root_path
       if signed_in?
-        url_path = current_user.user_type == :admin ? admin_posts_path : root_path # FIXME!
+        url_home = current_user.user_type == :admin ? admin_posts_path : root_path # FIXME!
+        url_user = current_user.user_type == :admin ? admin_users_path : root_path # FIXME!
       end
     %>
-    <div class="col-lg-4 col-md-4 col-xs-4 d-flex justify-content-around">
-        <%= link_to "HOME", url_path %>
-        <%= link_to "BLOG", url_path %>
-        <%= link_to t('activerecord.models.user.one').upcase, url_path %>
+    <div class="col-lg-2 col-md-4 col-xs-4 d-flex justify-content-around">
+      <nav>
+        <ul class="nav flex nav-pills">
+          <!--    <li class="nav-item"><%#= link_to "HOME", admin_posts_url, class: "nav-link #{"active" if params[:controller] == "admin/home"}"%></li>-->
+          <% if user_signed_in? %>
+            <% if current_user.user_type == "admin" %>
+              <li class="nav-item"><%= link_to "HOME", admin_home_url, class: "nav-link #{"active" if params[:controller] == "admin/home"}"%></li>
+              <li class="nav-item"><%= link_to "POST", admin_posts_url, class: "nav-link #{"active" if params[:controller] == "admin/posts"}"%></li>
+              <li class="nav-item"><%= link_to "USUÁRIOS", admin_users_url, class: "nav-link #{"active" if params[:controller] == "admin/users"}"%></li>
+            <% end %>
+          <% else %>
+            <li class="nav-item"><%= link_to "HOME", root_path, class: "nav-link #{"active" if params[:controller] == "home"}"%></li>
+            <li class="nav-item"><%= link_to "POST", posts_path, class: "nav-link #{"active" if params[:controller] == "posts"}"%></li>
+            <li class="nav-item"><%= link_to "CONTATO", admin_users_url, class: "nav-link #{"active" if params[:controller] == "users"}"%></li>
+          <% end %>
+        </ul>
+      </nav>
+      <%#= link_to if current_user.user_type == :admin ? t('activerecord.models.user.one').upcase, url_user  %>
       <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
     </div>
     <div class="navbar-collapse collapse" id="">
@@ -31,7 +46,7 @@
                   <%= current_user.name.blank? ? truncate(current_user&.email, length: 10) : current_user&.name %>
                 </span>
           <% else %>
-            <%= link_to "Login", root_path, class: 'btn btn-primary' %>
+            <%= link_to "Login", user_session_path, class: 'btn btn-primary' %>
           <% end %>
         </li>
       </ul>
