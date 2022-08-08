@@ -2,8 +2,12 @@ pt-BR:
   activerecord:
     models:
       post: "Post"
-      comment: "Comentário"
-      user: "Usuário"
+      comment:
+        one: "Comentário"
+        other: "Comentários"
+      user:
+        one: "Usuário"
+        other: "Usuários"
     attributes:
       post:
         title: "Título"
@@ -34,6 +38,18 @@ pt-BR:
       statuses:
         draft: "Rascunho"
         published: "Publicado"
+  btn:
+    edit: "Editar"
+    delete: "Apagar"
+    save: "Salvar"
+    show: "Mostrar"
+  comment:
+    back: "Voltar para o Blog"
+    count:
+      one: "%{amount} Comentário"
+      other: "%{amount} Comentários"
+  confirm:
+    destroy: 'Tem certeza que deseja deletar?'
   date:
     abbr_day_names: [dom, seg, ter, qua, qui, sex, sáb]
     abbr_month_names: [-, jan, fev, mar, abr, mai, jun, jul, ago, set, out, nov, dez]
@@ -142,6 +158,7 @@ pt-BR:
     create: "Criar"
     new_model: "Novo %{model}"
     new_model_f: "Nova %{model}"
+    no_name: "Sem nome"
     delete: "Apagar"
     edit: "Editar"
     editing: "Editando %{model}"
@@ -151,6 +168,7 @@ pt-BR:
     login: "Entrar"
     name: "Nome"
     new: "Novo"
+    order_by: "Ordenar por mais recentes"
     update: "Atualizar"
     save: "Salvar"
     send_mail: "Enviar email"
@@ -224,6 +242,9 @@ pt-BR:
     precision:
       format:
         delimiter: "."
+  post:
+    author: "Autor"
+    see_more: "Ver mais..."
   support:
     array:
       last_word_connector: ", e "

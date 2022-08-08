@@ -13,7 +13,7 @@ $themecolor-dark: #028ee1;
 $themecolor-alt: #26c6da;
 $theme-light: #fff;
 $theme-dark: #212529;
-$bg-purple: #380a54;
+$purple: #380a54;
 
 $skin1: #2cabe3;
 $skin2: #707cd2;
@@ -26,7 +26,7 @@ $skin6: #fff;
 // Topbar settings
 // ======================================================
 
-$bar: $bg-purple;
+$bar: $purple;
 $topbar-height: 60px;
 $topbar-navlink-padding: 0px 14px;
 $topbar-navlink-font-size: 14px;
@@ -297,7 +297,6 @@ $border-color: rgba(120,130,140,.13) !default;
 $border-radius: 2px !default;
 $border-radius-lg: 4px !default;
 $border-radius-sm: 1px !default;
-
 // Progress bars
 $progress-height: 4px !default;
 $progress-bg: rgba(120, 130, 140, 0.13);

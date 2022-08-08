@@ -1,10 +1,16 @@
 <div class="container-fluid">
   <nav class="navbar top-navbar navbar-expand-md navbar-dark">
     <b class="logo-icon"><%= image_tag('logo.png', width:'80', alt:'Nucleus') %></b>
-    <div class="col-lg-4 col-md-3 col-xs-2 d-flex justify-content-around" data-logobg="skin6">
-        <%= link_to "HOME", root_path %>
-        <%= link_to "BLOG", root_path %>
-        <%= link_to "HOME", root_path %>
+    <%
+      url_path = root_path
+      if signed_in?
+        url_path = current_user.user_type == :admin ? admin_posts_path : root_path # FIXME!
+      end
+    %>
+    <div class="col-lg-4 col-md-4 col-xs-4 d-flex justify-content-around">
+        <%= link_to "HOME", url_path %>
+        <%= link_to "BLOG", url_path %>
+        <%= link_to t('activerecord.models.user.one').upcase, url_path %>
       <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
     </div>
     <div class="navbar-collapse collapse" id="">
@@ -19,10 +25,11 @@
         </li>
         <li>
           <% if signed_in? %>
-            <a class="profile-pic col-lg-2" href="#">
-              <img src="<%= image_path(current_user.nil? ? "logo.png" : "user-solid.svg") %>" alt="user-img" width="36" class="img-circle">
-              <span class="text-white font-medium"><%= current_user&.name %></span>
-            </a>
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+                <img src="<%= image_path(current_user.nil? ? "logo.png" : "user-solid.svg") %>" alt="user-img" width="30" class="img-circle">
+                <span class="text-white font-medium">
+                  <%= current_user.name.blank? ? truncate(current_user&.email, length: 10) : current_user&.name %>
+                </span>
           <% else %>
             <%= link_to "Login", root_path, class: 'btn btn-primary' %>
           <% end %>

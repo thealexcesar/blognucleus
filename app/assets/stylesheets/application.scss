@@ -1,6 +1,7 @@
 /*
  *= require_tree .
  *= require_self
+ *= require chat
  */
 @import "bootstrap";
 @import "font-awesome";
@@ -8,7 +9,7 @@
 
 
 body {
-  .main, div, .header, main, .footer {
+  .main, div, header, main, footer {
     overflow-x: hidden;
   }
 }
@@ -238,11 +239,26 @@ main {
   height: 80vh;
 }
 
+.text-purple {
+  color: $purple;
+  font-weight: bold;
+}
+
+hr.post-title {
+  background-color: $purple;
+  width: 250px;
+  opacity: 1;
+  padding: 2px 0;
+}
+hr.post { background-color: $purple; opacity: 1;}
+
 footer {
-  background: $bar;
+  background: $purple;
   height: 10vh;
   position: absolute;
   bottom: 0;
 }
 
 .blog { min-width:550px; max-width:90vw; }
+.margin-hr { margin:-12px 0 36px 0; }
+.right { text-align:right; }
