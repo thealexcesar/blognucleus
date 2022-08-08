@@ -1,5 +1,6 @@
 <div class="mt-3 container d-flex justify-content-center">
   <div class="container blog col-lg-9 col-md-10 col-sm-12 col-xs-12">
+    <%= link_to t('general.new_model', model: t('activerecord.models.user.one')), new_admin_user_path %>
     <h1 class="mt-4"><%= t('activerecord.models.user.other') %></h1>
     <% @users.each do |user| %>
       <div>
@@ -15,6 +16,6 @@
         <br>
         <p><hr class="post margin-hr"></p>
       </div>
-    <% end %>
+  <% end %>
   </div>
 </div>

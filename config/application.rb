@@ -39,5 +39,7 @@ module Blognucleus
     I18n.available_locales = [:en, "pt-BR"]
     I18n.default_locale = "pt-BR"
     config.encoding = "utf-8"
+
+    config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
   end
 end

@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Criando usuário ======================================================================================================
-admin = User.new(name: "Alex", email: 'admin@nucleus.com.br', password: '123123', password_confirmation: '123123', user_type: 1)
+admin = User.new(name: "Alex", email: 'admin@droptoprint.com.br', password: '123123', password_confirmation: '123123', user_type: 1)
 puts admin.save ? "Admin criado." : "Erro ao criar \"admin\" #{admin.errors.full_messages}."
 
-user = User.new(name: "Ana", email: 'user@nucleus.com.br', password: '123123', password_confirmation: '123123')
+user = User.new(name: "Ana", email: 'user@droptoprint.com.br', password: '123123', password_confirmation: '123123')
 puts user.save ? "Usuário criado." : "Erro ao criar usuário \"comun\" #{user.errors.full_messages}."
 # Criando Post =========================================================================================================
 postAdm = Post.new(

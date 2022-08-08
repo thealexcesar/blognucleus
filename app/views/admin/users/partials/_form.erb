@@ -1,27 +1,28 @@
-<div id="support_status_updated" class="row">
-  <div class="col-xs-12 form-group">
-    <div class="form-group" style="margin-bottom:0;">
-      <h3>Teste novo comenteario</h3>
-      <%= form_for(@comment, url: create_comment_posts_path, html: { class: "form valida-form", role: "form", method: "post"}) do |f| %>
-        <%= f.hidden_field :post_id, value: @post.id %>
-
-        <div class="form-group">
-          <label>Comentario</label>
-        <%= f.text_area :body, class: "form-control", placeholder: "BODY" %>
-        </div>
-        <div class="form-group">
-          <label>Nome</label>
-          <%= f.text_area :name, class: "form-control", placeholder: "BODY" %>
-        </div>
-
-
-        <div class="form-group">
-          <%= f.submit t('btn.save'), class: "btn btn-sm btn-primary pull-right m-t-n-xs", value: t('btn.save') %>
-        </div>
-        <div class="clearfix"></div>
-        <br><br>
-      <% end %>
-    </div>
+<%= form_for(@user, url: url_form, html: { class: "form-user open-loading-submit", role: "form"}) do |f| %>
+  <div class="form-group">
+    <label><%= t('general.name') %>:</label>
+    <%= f.text_field :name, class: "form-control", type: "text", placeholder: t('general.name') %>
   </div>
-</div>
+  <div class="form-group">
+    <label>E-mail:</label>
+    <%= f.text_field :email, class: "form-control", type: "text", placeholder: "email" %>
+  </div>
+  <div class="form-group">
+    <label><%= t('activerecord.attributes.user.password') %>:</label>
+    <%= f.password_field :password, class: "form-control", type: "text", placeholder: t('activerecord.attributes.user.password') %>
+  </div>
+  <div class="form-group">
+    <label><%= t('activerecord.attributes.user.password_confirmation') %>:</label>
+    <%= f.password_field :password_confirmation, class: "form-control", type: "text", placeholder: t('activerecord.attributes.user.password_confirmation') %>
+  </div>
+  <div class="form-group">
+    <label><%= t('general.name') %>:</label>
+    <% type = [[t('activerecord.attributes.user.user_types.user'), :user], [t('activerecord.attributes.user.user_types.admin'), :admin]] %>
+    <%= f.select :user_type, type,class: "form-control input-sm", type: "text", placeholder: t('activerecord.attributes.user.password_confirmation') %>
+  </div>
+  <div class="form-group">
+    <%= f.submit t('btn.save'), class: "btn btn-sm btn-primary pull-right m-t-n-xs", value: t('btn.save') %>
+  </div>
 
+  <div class="clearfix"></div>
+<% end %>

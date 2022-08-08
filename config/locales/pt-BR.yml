@@ -1,10 +1,12 @@
 pt-BR:
   activerecord:
     models:
-      post: "Post"
       comment:
         one: "Comentário"
         other: "Comentários"
+      post:
+        one: "Post"
+        other: "Posts"
       user:
         one: "Usuário"
         other: "Usuários"
@@ -31,10 +33,10 @@ pt-BR:
         status: "Status"
         user_type: "Tipo de usuário"
         updated_at: "Atualizado em"
-      user_types:
-        admin: "Admin"
-        name: "Nome"
-        user: "Usuário"
+        user_types:
+          admin: "Administrador"
+          name: "Nome"
+          user: "Usuário comum"
       statuses:
         draft: "Rascunho"
         published: "Publicado"
@@ -209,6 +211,9 @@ pt-BR:
       create: "Salvar" # Criar %{model}
       submit: "Salvar" # Salvar %{model}
       update: "Salvar" # Atualizar %{model}"
+  home:
+    contact: "CONTATO"
+    users: "USUÁRIOS"
   number:
     currency:
       format:
@@ -280,6 +285,7 @@ pt-BR:
       long: "%d/%m/%Y às %H:%M"
       short: "%d/%m/%Y"
     pm: 'pm'
-
+#  user:
+#    user: "Usuário"
   will_paginate:
     records: "Primeiros 2 registros"

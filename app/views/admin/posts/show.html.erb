@@ -5,12 +5,13 @@
     <p class="col-lg-12 col-md-6 col-xs-6"> <%= @post&.body %> </p>
     <%= link_to t('comment.back'), admin_posts_path, class: 'text-purple' %>
     <span class="pull-right small">
-      <%= t('post.author') %>: <%= link_to @post.user.name.nil? ? @post.user&.email : @post.user&.name, root_path, class: 'text-purple' unless @post.nil?%>
+      <%= t('post.author') %>:
+      <%= link_to @post.user.name.nil? ? @post.user&.email : @post.user&.name, "/admin/users", class: 'text-purple' unless @post.nil? %>
     </span>
     <br>
     <p> <hr class="post margin-hr"> </p>
     <div class="d-flex justify-content-between">
-<!--      <h4><%#= @post.comments&.count %> <%#= @post&.comments.model_name.human(count: @post&.comments.count).upcase %></h4>-->
+      <h4><%= @post.comments&.count %> <%= @post&.comments.model_name.human(count: @post&.comments.count).upcase %></h4>
       <span class="small"><%= link_to "#" do %>
         <%= t('general.order_by') %>
           <%= fa_icon('angle-down') %>
