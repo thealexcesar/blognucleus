@@ -35,7 +35,6 @@ pt-BR:
         updated_at: "Atualizado em"
         user_types:
           admin: "Administrador"
-          name: "Nome"
           user: "Usuário comum"
       statuses:
         draft: "Rascunho"

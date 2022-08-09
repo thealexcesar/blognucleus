@@ -1,17 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :require_user, :admin?, except: [:login, :create]
-  before_action :set_user, only: %i[ show edit update destroy ]
-
-  # ====================================================================================================================
-  def login
-    @user_exists = true
-    unless User.exists?
-      @user_exists = false
-      @user = User.new
-    end
-    redirect_to user_session_path
-  end
+  before_action :require_user, :admin?
+  before_action :set_user, only: [ :show, :edit, :update, :destroy ]
 
   # ====================================================================================================================
   def index
@@ -30,7 +20,6 @@ class Admin::UsersController < ApplicationController
   # ====================================================================================================================
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
         format.html { redirect_to admin_user_path(@user), notice: Translate.created_msg(controller_name.classify) }
@@ -43,9 +32,10 @@ class Admin::UsersController < ApplicationController
   end
   # ====================================================================================================================
   def update
+    puts "\n\n\n\naqui:\n#{@user}\n\n\n"
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to edit_admin_user_path(@user), notice: Translate.updated_msg(controller_name.classify) }
+        format.html { redirect_to "/", notice: Translate.updated_msg(controller_name.classify) }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -70,6 +60,6 @@ class Admin::UsersController < ApplicationController
     @user = User.find_by_id params[:id]
   end
   def user_params
-    params.require(:user).permit(:email, :name, :password, :password_confirmation, :user_type)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :user_type)
   end
 end

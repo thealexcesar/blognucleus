@@ -1,6 +1,6 @@
 <h1><%= editing_model %></h1>
 
-<%= render 'admin/users/partials/form', url_form: edit_admin_user_path %>
+<%= render 'admin/users/partials/form', user: @user, url_form: admin_user_path(user) %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Show', admin_users_path(@user) %>
+<%= link_to 'Back', admin_users_url %>
