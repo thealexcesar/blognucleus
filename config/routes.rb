@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :posts
     resources :users do
+      post 'create', on: :collection
+      post 'update', on: :collection
+      post 'destroy', on: :collection
     end
   end
 
@@ -13,5 +16,4 @@ Rails.application.routes.draw do
   devise_for :users
 
   # mount Ckeditor::Engine => '/ckeditor'
-  # get '/home', to: 'home#index', as: 'home'
 end

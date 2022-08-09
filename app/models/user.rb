@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   before_create :set_default_user_type
 
