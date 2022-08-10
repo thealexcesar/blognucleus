@@ -284,6 +284,10 @@ pt-BR:
       long: "%d/%m/%Y às %H:%M"
       short: "%d/%m/%Y"
     pm: 'pm'
+  title:
+    post: "Notícia"
+    last_post: "Última notícia %{icon} <small style='opacity:0.8;'> visualizar todas</small>"
+    posts: "Notícias"
 #  user:
 #    user: "Usuário"
   will_paginate:

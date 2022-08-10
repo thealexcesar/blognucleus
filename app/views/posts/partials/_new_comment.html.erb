@@ -10,32 +10,15 @@
           <%= f.text_area :body, class: "form-control", placeholder: t('comment.enter.comment') %>
 
           <%= f.label :name %>
-          <%#= f.text_area :name, class: "form-control", placeholder: t('comment.enter.name') %>
-          <div class="form-group mt20">
-            <%= f.cktext_area :name, value: @comment.name,
-                              class: 'form-control required', placeholder: "ckEditor",
-                              ckeditor: {
-                                language: 'pt-br', toolbar: 'mini',
-                                # filebrowserImageUploadUrl: "/ckeditor/pictures?company_id=#{@company.id}",
-                                # filebrowserImageBrowseUrl: "/picture_overrides?company_id=#{@company.id}"
-                              }
-            %>
-          </div>
+          <%= f.text_area :name, class: "form-control", placeholder: t('comment.enter.name') %>
+
           <%= f.submit t('btn.save'), class: "btn btn-sm btn-primary pull-right m-t-n-xs mt-2", value: t('btn.save') %>
         </div>
         <div class="clearfix"></div>
+        <hr>
         <br><br>
-      <% end %>
+    <% end %>
     </div>
   </div>
 </div>
 
-<script type='text/javascript' charset='UTF-8'>
-    $(document).ready(function(){
-        $('form[data-remote]').bind('ajax:before', function(){
-            for (instance in CKEDITOR.instances){
-                CKEDITOR.instances[instance].updateElement();
-            }
-        });
-    });
-</script>

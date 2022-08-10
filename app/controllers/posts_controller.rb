@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [ :new, :create, :show, :edit, :update, :create_comment, :destroy ]
-  before_action :set_comment, only: [ :show, :create_comment ]
+  before_action :set_post_comments, only: [ :show, :edit, :update, :create_comment, :destroy, :show, :create_comment ]
 
   # ====================================================================================================================
   def index
-    @posts = Post.all
+    @posts = Post.all.order("id DESC")
+
   end
   # ====================================================================================================================
   def show
@@ -21,7 +21,6 @@ class PostsController < ApplicationController
   # ====================================================================================================================
   def create
     @post = Post.new(post_params)
-
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_url(@post), notice: Translate.created_msg(controller_name.classify) }
@@ -70,11 +69,10 @@ class PostsController < ApplicationController
   # = PRIVATE ==========================================================================================================
   # ====================================================================================================================
   private
-    def set_post
+    # Use callbacks to share common setup or constraints between actions.
+    def set_post_comments
       @post = Post.find_by_id params[:id]
-    end
-    def set_comment
-      @show_comment = Comment.find params[:post_id]
+      @comment = Comment.find_by_id params[:post_id]
     end
     def post_params
       params.require(:post).permit(:title, :body, :user_id, :status)

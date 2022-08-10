@@ -3,16 +3,15 @@
     # side = "left"
     # side = 'right' if my_perfil?(@current_user, comment.user)
   %>
-    <div class="row mt-3 margin-nil">
+    <div class="row mt20 margin-nil">
       <div class="chat-discussion chat-discussion-support">
         <div class="chat-message">
-          <div class="d-flex justify-content-start">
-            <img class="mt-0 message-avatar" id="imagem-perfil" src="<%= image_path("logo.png") %>" width="40px" height="40px" alt="Avatar">
-            <div class="border border-1 rounded col-lg-11 p-2 message d-flex flex-column">
-              <a class="message-author" href="#"> <%= comment.name %> </a>
-              <span class="message-date"> <%= l(comment&.created_at, format: :long) %> </span>
-              <p class="message-content mt-3"> <%= comment&.body %> </p>
-            </div>
+          <!--          <img class="message-avatar" id="imagem-perfil" src="<%#= image_path(media.nil? ? "logo-temp.png" : media.get_aws_url) %>" alt="Avatar">-->
+          <div class="message">
+            <a class="message-author" href="#"> <%= comment.name %> </a>
+            <span class="message-date"> <%= l(comment&.created_at, format: :long) %> </span>
+            <p class="message-content mt-3"> <%= comment&.body %> </p>
+            <hr>
           </div>
         </div>
       </div>

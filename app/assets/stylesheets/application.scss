@@ -235,6 +235,7 @@ Topbar Responsive
   }
 }
 
+
 main {
   height: 80vh;
 }
@@ -254,8 +255,8 @@ hr.post { background-color: $purple; opacity: 1;}
 
 footer {
   background: $purple;
-  height: 10vh;
-  position: absolute;
+  position: fixed;
+  height: 5vh;
   bottom: 0;
 }
 

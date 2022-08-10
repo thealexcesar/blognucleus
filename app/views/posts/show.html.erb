@@ -4,6 +4,10 @@
     <h3 class="col-lg-12 col-md-6 col-xs-6"> <%= @post&.title %> </h3>
     <p class="col-lg-12 col-md-6 col-xs-6"> <%= @post&.body %> </p>
     <%= link_to t('comment.back'), root_path, class: 'text-purple' %>
+    <p>
+      <strong><%= t('table.status') %>:</strong>
+      <%= @post.status %>
+    </p>
     <span class="pull-right small">
           <%= t('post.author') %>: <%= link_to @post.user.name.nil? ? @post.user&.email : @post.user&.name, root_path, class: 'text-purple' unless @post.nil?%>
     </span>
@@ -17,8 +21,11 @@
         <% end %>
       </span>
     </div>
-    <%= render 'posts/partials/new_comment', comments: @comments %>
+    <%= render 'posts/partials/new_comment' %>
     <%= render 'posts/partials/comments', comments: @comments %>
     <hr>
   </div>
 </div>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

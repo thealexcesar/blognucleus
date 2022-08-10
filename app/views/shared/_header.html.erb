@@ -6,12 +6,12 @@
         <ul class="nav flex nav-pills">
           <!--    <li class="nav-item"><%#= link_to "HOME", admin_posts_url, class: "nav-link #{"active" if params[:controller] == "admin/home"}"%></li>-->
             <% if user_signed_in? && current_user.user_type == "admin" %>
-              <li class="nav-item"><%= link_to "HOME", root_path, class: "nav-link #{"active" if params[:controller] == "admin/home"}"%></li>
-              <li class="nav-item"><%= link_to "POST", admin_posts_url, class: "nav-link #{"active" if params[:controller] == "admin/posts"}"%></li>
+              <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link #{"active" if params[:controller] == "admin/home"}"%></li>
+              <li class="nav-item"><%= link_to t('title.posts'), admin_posts_url, class: "nav-link #{"active" if params[:controller] == "admin/posts"}"%></li>
               <li class="nav-item"><%= link_to t('home.users'), "/admin/users", class: "nav-link #{"active" if params[:controller] == "admin/users"}"%></li>
             <% else %>
-              <li class="nav-item"><%= link_to "HOME", root_path, class: "nav-link #{"active" if params[:controller] == "home"}"%></li>
-              <li class="nav-item"><%= link_to "POST", posts_path, class: "nav-link #{"active" if params[:controller] == "posts"}"%></li>
+              <li class="nav-item"><%= link_to "Ho]me", root_path, class: "nav-link #{"active" if params[:controller] == "home"}"%></li>
+              <li class="nav-item"><%= link_to t('title.posts'), posts_path, class: "nav-link #{"active" if params[:controller] == "posts"}"%></li>
 <!--              <li class="nav-item"><%#= link_to t('home.contact'), admin_users_url, class: "nav-link #{"active" if params[:controller] == "users"}"%></li>-->
             <% end %>
         </ul>
