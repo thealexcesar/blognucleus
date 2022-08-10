@@ -1,0 +1,19 @@
+<% url_form = @post.new_record? ? admin_posts_path : admin_post_path(@post) %>
+<%= form_for(@post, url: url_form, html: { class: "form-user open-loading-submit", role: "form"}) do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :status, value: :draft %>
+
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= f.label :body %>
+      <%= f.text_area :body %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>

@@ -1,2 +1,23 @@
 <h1 class="center text-purple">HOME</h1>
-
+<p>
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+</p>
+<p><hr class="mt-3 post margin-hr"></p>
+<div class="mt-4 d-flex align-items-center">
+  <h1 class="d-inline">BLOG <%= fa_icon('angle-right') %></h1> &#160; <h5> Clique na aba Post para visualizar mais Post</h5>
+</div>
+    <hr class="post-title margin-hr" style="width: inherit">
+<div>
+  <% unless @last.nil? %>
+    <p><%= @last&.title %></p>
+    <span>
+      <%= truncate(@last&.body, length: 300) %><br>
+      <%= link_to t('post.see_more'), @last, class: 'text-purple' %>
+    </span>
+    <span class="pull-right">
+        <%= t('post.author') %>: <%= link_to @last.user.name.nil? ? @last.user&.email : @last.user&.name, '#', class: 'text-purple' %>
+    </span>
+    <br>
+    <p><hr class="post margin-hr"></p>
+  <% end %>
+</div>

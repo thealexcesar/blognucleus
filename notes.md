@@ -136,11 +136,13 @@ rails g migration AddStatusToPost status:integer
 Todo:
 
 ### Admin
+
 - [x] Tela de login
 - [ ] Gerenciamento de usuários (CRUD de users)
 - [ ] Gerenciamento do blog (CRUD de posts)
 
 ### Frontend do blog
+
 - [x] Todas as noticias
 - [ ] Busca por titulo da noticia
 - [x] Comentarios na noticia

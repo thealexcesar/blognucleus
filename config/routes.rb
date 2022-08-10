@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   root to: "home#index"
   namespace :admin do
-    resources :posts
-    resources :users do
+    resources :posts do
       post 'create', on: :collection
       post 'update', on: :collection
       post 'destroy', on: :collection
@@ -14,6 +13,9 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
 
   # mount Ckeditor::Engine => '/ckeditor'
 end

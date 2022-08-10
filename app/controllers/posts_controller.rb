@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [ :show, :edit, :update, :create_comment, :destroy ]
-  # before_action :set_comment, only: [ :show, :create_comment]
+  before_action :set_post, only: [ :new, :create, :show, :edit, :update, :create_comment, :destroy ]
+  before_action :set_comment, only: [ :show, :create_comment ]
 
   # ====================================================================================================================
   def index
@@ -73,11 +73,11 @@ class PostsController < ApplicationController
     def set_post
       @post = Post.find_by_id params[:id]
     end
-  # def set_comment
-  #   @show_comment = Comment.find params[:post_id]
-  # end
+    def set_comment
+      @show_comment = Comment.find params[:post_id]
+    end
     def post_params
-      params.require(:post).permit(:title, :body, :name, :user_id, :status)
+      params.require(:post).permit(:title, :body, :user_id, :status)
     end
     def comment_params
       params.require(:comment).permit(:name, :body, :post_id)
