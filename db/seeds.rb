@@ -6,13 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Criando usuário ======================================================================================================
+# Seed usuário ======================================================================================================
 admin = User.new(name: "Alex", email: 'admin@droptoprint.com.br', password: '123123', password_confirmation: '123123', user_type: 1)
 puts admin.save ? "Admin criado." : "Erro ao criar \"admin\" #{admin.errors.full_messages}."
 
-user = User.new(name: "Ana", email: 'user@droptoprint.com.br', password: '123123', password_confirmation: '123123')
+user = User.new(name: "João", email: 'user@droptoprint.com.br', password: '123123', password_confirmation: '123123')
 puts user.save ? "Usuário criado." : "Erro ao criar usuário \"comun\" #{user.errors.full_messages}."
-# Criando Post =========================================================================================================
+
+# Seed Post =========================================================================================================
 postAdm = Post.new(
   title: "First Post by Admin",
   body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
@@ -36,4 +37,3 @@ postUsr = Post.new(
   user_id: 2
  )
 puts postUsr.save ? "Post de Usuário criado." : "Erro ao criar \"Post de usuário\" #{postUsr.errors.full_messages}."
-# ======================================================================================================================

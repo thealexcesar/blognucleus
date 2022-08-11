@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   protected
   def require_user
     if current_user

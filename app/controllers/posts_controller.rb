@@ -1,10 +1,17 @@
 class PostsController < ApplicationController
-  before_action :set_post_comments, only: [ :show, :edit, :update, :create_comment, :destroy, :show, :create_comment ]
+  before_action :set_post, only: [ :show, :edit, :update, :create_comment, :destroy ]
+  before_action :set_comment, only: [ :show, :create_comment ]
 
   # ====================================================================================================================
   def index
-    @posts = Post.all.order("id DESC")
-
+    conditions = []
+    values = {}
+    unless params[:title].blank?
+      conditions << 'LOWER("title") LIKE :title'
+      values[:title] = "%#{params[:title].to_s.downcase}%"
+    end
+    query = [conditions.join(' AND '), values] unless values.empty?
+    @posts = Post.where(query).order("id ASC")
   end
   # ====================================================================================================================
   def show
@@ -70,8 +77,10 @@ class PostsController < ApplicationController
   # ====================================================================================================================
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_post_comments
+    def set_post
       @post = Post.find_by_id params[:id]
+    end
+    def set_comment
       @comment = Comment.find_by_id params[:post_id]
     end
     def post_params

@@ -13,7 +13,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
   <% unless @last_post.nil? %>
     <p><%= @last_post&.title %></p>
     <span>
-      <%= truncate(@last_post&.body, length: 300) %><br>
+      <%= @last_post&.body %><br>
       <%= link_to t('post.see_more'), @last_post, class: 'text-purple' %>
     </span>
     <span class="pull-right">

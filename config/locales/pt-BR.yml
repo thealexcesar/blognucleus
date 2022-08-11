@@ -118,6 +118,9 @@ pt-BR:
       month: "Mês"
       year: "Ano"
   errors:
+  filter:
+    title: "digite um título..."
+    name: "digite um nome..."
     format: "%{attribute} %{message}"
     messages:
       accepted: "deve ser aceito"
@@ -162,10 +165,13 @@ pt-BR:
     back: "Voltar"
     close: "Fechar"
     conductor: "Condutor"
+    contact: "Contato"
+    copyright: "Todos os direitos reservados."
     create: "Criar"
     new_model: "Novo %{model}"
     new_model_f: "Nova %{model}"
     no_name: "Sem nome"
+    no_register_found: "Nenhum registro encontrado."
     delete: "Apagar"
     edit: "Editar"
     editing: "Editando %{model}"
@@ -210,9 +216,6 @@ pt-BR:
       create: "Salvar" # Criar %{model}
       submit: "Salvar" # Salvar %{model}
       update: "Salvar" # Atualizar %{model}"
-  home:
-    contact: "CONTATO"
-    users: "USUÁRIOS"
   number:
     currency:
       format:

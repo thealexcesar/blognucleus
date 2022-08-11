@@ -10,7 +10,8 @@
     </tr>
   </thead>
   <tbody>
-  <% @users.each do |user| %>
+  <% if @users.count > 0
+    @users.each do |user| %>
     <tr>
       <td><%= user&.name %></td>
       <td><%= truncate(user&.email, length: 10) %></td>
@@ -21,6 +22,11 @@
         <%= link_to fa_icon("trash"), admin_user_path(user), class: "btn btn-sm btn-danger", method: :delete, data: { confirm: t('confirm.destroy') } %>
       </td>
     </tr>
-  </tbody>
+    <% end %>
+    </tbody>
+  <% else %>
+    <tr>
+      <td colspan="10"> <p class="bg-info" style="padding:5px; margin:0;"><%= t('general.no_register_found') %></p> </td>
+    </tr>
   <% end %>
 </table>

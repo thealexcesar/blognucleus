@@ -8,4 +8,5 @@ class Post < ApplicationRecord
   def set_default_status
     self.status ||= :draft
   end
+
 end

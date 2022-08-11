@@ -5,7 +5,14 @@ class Admin::UsersController < ApplicationController
 
   # ====================================================================================================================
   def index
-    @users = User.all
+    conditions = []
+    values = {}
+    unless params[:name].blank?
+      conditions << 'LOWER("name") LIKE :name'
+      values[:name] = "%#{params[:name].to_s.downcase}%"
+    end
+    query = [conditions.join(' AND '), values] unless values.empty?
+    @users = User.where(query).order("id ASC")
   end
   # ====================================================================================================================
   def show
@@ -32,7 +39,6 @@ class Admin::UsersController < ApplicationController
   end
   # ====================================================================================================================
   def update
-    puts "\n\n\n\naqui:\n#{@user}\n\n\n"
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to "/", notice: Translate.updated_msg(controller_name.classify) }
