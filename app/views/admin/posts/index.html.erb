@@ -25,4 +25,9 @@
   <% end %>
 </table>
 <% end %>
+<div class="d-flex justify-content-end">
+  <div class="style-pagination">
+    <%= will_paginate @posts, previous_label: fa_icon('angle-left', text: t('will_paginate.prev')), next_label: t('will_paginate.next', icon: fa_icon('angle-right')) %>
+  </div>
+</div>
 <%= link_to new_model, new_admin_post_path %>

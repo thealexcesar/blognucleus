@@ -51,4 +51,5 @@ gem 'bootstrap', '~> 5.2'
 gem 'jquery-rails'
 gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
 gem 'ckeditor'
+gem 'will_paginate', '~> 3.3'
 

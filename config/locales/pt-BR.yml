@@ -295,4 +295,6 @@ pt-BR:
 #  user:
 #    user: "Usuário"
   will_paginate:
+    prev: "anterior"
+    next: "próximo %{icon}"
     records: "Primeiros 2 registros"

@@ -11,7 +11,7 @@ class PostsController < ApplicationController
       values[:title] = "%#{params[:title].to_s.downcase}%"
     end
     query = [conditions.join(' AND '), values] unless values.empty?
-    @posts = Post.where(query).order("id ASC")
+    @posts = Post.where(query).order("id ASC").paginate(page: params[:page], per_page: 4)
   end
   # ====================================================================================================================
   def show
