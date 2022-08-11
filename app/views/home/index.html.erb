@@ -14,7 +14,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
     <p><%= @last_post&.title %></p>
     <span>
       <%= @last_post&.body %><br>
-      <%= link_to t('post.see_more'), @last_post, class: 'text-purple' %>
+      <%= link_to t('btn.show'), @last_post, class: 'text-purple' %>
     </span>
     <span class="pull-right">
         <%= t('post.author') %>: <%= link_to @last_post.user.name.nil? ? @last_post.user&.email : @last_post.user&.name, '#', class: 'text-purple' %>

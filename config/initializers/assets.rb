@@ -11,6 +11,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # ckeditor
 Rails.application.config.assets.precompile += %w[ckeditor/config.js] #FIXME!
 
+# /vendor/assets
+Rails.application.config.assets.precompile += %w( jquery-3.6.0/dist/jquery.js )
 # Precompile additional assets.
 # application.js, application.scss, and all non-JS/CSS in the app/assets
 # folder are already added.

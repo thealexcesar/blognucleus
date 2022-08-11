@@ -44,6 +44,7 @@ pt-BR:
     delete: "Apagar"
     save: "Salvar"
     show: "Mostrar"
+    view: "Visualizar"
   comment:
     back: "Voltar para o Blog"
     count:
@@ -53,7 +54,7 @@ pt-BR:
       comment: "Digite um comentário"
       name: "Digite seu nome"
     successfully:
-      created: "Comentario criado com sucesso"
+      created: "Comentário criado com sucesso."
     to_comment: "Comentar"
   confirm:
     destroy: 'Tem certeza que deseja deletar?'
@@ -119,8 +120,8 @@ pt-BR:
       year: "Ano"
   errors:
   filter:
-    title: "digite um título..."
-    name: "digite um nome..."
+    title: "buscar por título..."
+    name: "buscar por nome..."
     format: "%{attribute} %{message}"
     messages:
       accepted: "deve ser aceito"

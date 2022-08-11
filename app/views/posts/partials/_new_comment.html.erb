@@ -1,6 +1,5 @@
 <div id="support_status_updated" class="row">
   <div class="col-xs-12 form-group">
-    <hr>
     <div class="form-group mt-4" style="margin-bottom:0;">
       <%= form_for(@comment, url: create_comment_posts_path, html: { class: "form valida-form", role: "form", method: "post"}) do |f| %>
         <%= f.hidden_field :post_id, value: @post.id %>
@@ -11,12 +10,13 @@
 
           <%= f.label :name %>
           <%= f.text_area :name, class: "form-control", placeholder: t('comment.enter.name') %>
-
-          <%= f.submit t('btn.save'), class: "btn btn-sm btn-primary pull-right m-t-n-xs mt-2", value: t('btn.save') %>
+          <br>
+          <div class="d-flex justify-content-between align-items-center">
+            <%= link_to 'Back', posts_path, class: "btn btn-sm btn-dark pull-right m-t-n-xs mt-2" %>
+            <%= f.submit t('btn.save'), class: "btn btn-sm btn-primary pull-right m-t-n-xs mt-2", value: t('btn.save') %>
+          </div>
         </div>
         <div class="clearfix"></div>
-        <hr>
-        <br><br>
     <% end %>
     </div>
   </div>

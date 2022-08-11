@@ -3,7 +3,7 @@ module ApplicationHelper
   # === Filter ===
   def set_filter param, q, field
     form_tag(field, method: "get", class: "form-inline", role: "form") do
-      text_field_tag param, params[param].nil? ? "" : params[param], class: "form-control mt-0", placeholder: q.to_s
+      text_field_tag param, params[param].nil? ? "" : params[param], class: "form-control mt-0 icon-search", placeholder: q.to_s
     end
   end
 

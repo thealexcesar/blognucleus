@@ -14,7 +14,7 @@
     @users.each do |user| %>
     <tr>
       <td><%= user&.name %></td>
-      <td><%= truncate(user&.email, length: 10) %></td>
+      <td><%= user&.email %></td>
       <td><%= t("activerecord.attributes.user.user_types.#{user.user_type}") %></td>
       <td>
         <%= link_to fa_icon("eye"), admin_user_path(user), class: "btn btn-sm btn-success" %>

@@ -16,24 +16,25 @@
   <a class="nav-toggler waves-effect d-block d-md-none" href="javascript:void(0)"> <i class="ti-menu ti-close"></i> </a>
 </div>
 <div class="navbar-collapse collapse" id="">
-  <ul class="navbar-nav ms-auto">
-    <li class=" in">
-      <form role="search" class="app-search d-none d-md-block me-3">
-        <%= get_filter %> <a href="" class="active"> <i class="fa fa-search"></i> </a>
-      </form>
-    </li>
-    <li>
+  <div class="navbar-nav ms-auto">
+    <div class=" in">
+      <% if params[:action] == "index" && params[:controller] == "admin/users" || params[:controller] == "admin/posts" || params[:controller] == "posts" %>
+        <form role="search" class="app-search d-none d-md-block me-2">
+          <%= get_filter %> <a href="" class="active"> <i class="fa fa-search me-4"></i> </a>
+        </form>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-lg-1 ">
       <% if signed_in? %>
-
       <%#= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-
         <img src="<%= image_path(current_user.nil? ? "logo.png" : "user-solid.svg") %>" alt="user-img" width="30" class="img-circle">
         <span class="text-white font-medium">
-          <%= current_user.name.blank? ? truncate(current_user&.email, length: 10) : current_user&.name %>
+          <%= current_user.name.blank? ? truncate(current_user&.email, length: 10) : current_user&.name.split.first %>
         </span>
       <% else %>
         <%= link_to "Login", "/users/sign_in", class: 'btn btn-primary' %>
       <% end %>
-    </li>
-  </ul>
+    </div>
 </div>
