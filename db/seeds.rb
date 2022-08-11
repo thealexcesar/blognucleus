@@ -6,34 +6,49 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+PASSWORD = "123123"
 # Seed usuário ======================================================================================================
-admin = User.new(name: "Alex", email: 'admin@droptoprint.com.br', password: '123123', password_confirmation: '123123', user_type: 1)
+admin = User.new(name: "Admin Blog Nucleus", email: 'admin@droptoprint.com.br', password: PASSWORD, password_confirmation: '123123', user_type: 1)
 puts admin.save ? "Admin criado." : "Erro ao criar \"admin\" #{admin.errors.full_messages}."
 
-user = User.new(name: "João", email: 'user@droptoprint.com.br', password: '123123', password_confirmation: '123123')
-puts user.save ? "Usuário criado." : "Erro ao criar usuário \"comun\" #{user.errors.full_messages}."
+# Fake users
+30.times do |i|
+  user = User.create(
+     name: Faker::Name.unique.name,
+     email: Faker::Internet.email,
+     password: PASSWORD,
+     password_confirmation: PASSWORD
+  )
+  puts user.save ? "Usuário #{user.name} criado." : "Erro ao criar usuário \"comun\" #{user.errors.full_messages}."
+end
 
 # Seed Post =========================================================================================================
 postAdm = Post.new(
   title: "First Post by Admin",
-  body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-    scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
-    into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
-    release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-    software like Aldus PageMaker including versions of Lorem Ipsum.",
+  body:  Faker::Lorem.sentence,
   user_id: 1
 )
 puts postAdm.save ? "Post de Admin criado." : "Erro ao criar \"Post de admin\" #{postAdm.errors.full_messages}."
 
-postUsr = Post.new(
+postUser1 = Post.new(
   title: "First Post by User",
-  body: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-    scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
-    into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
-    release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-    software like Aldus PageMaker including versions of Lorem Ipsum.",
+  body: Faker::Lorem.sentence,
   user_id: 2
  )
-puts postUsr.save ? "Post de Usuário criado." : "Erro ao criar \"Post de usuário\" #{postUsr.errors.full_messages}."
+postUser2 = Post.new(
+  title: "First Post by second User",
+  body: Faker::Lorem.sentence,
+  user_id: 3
+)
+postUser3 = Post.new(
+  title: "First Post by second third",
+  body: Faker::Lorem.sentence,
+  user_id: 4
+)
+postUser4 = Post.new(
+  title: "First Post by second fourth",
+  body: Faker::Lorem.sentence,
+  user_id: 5
+)
+puts postUser1.save && postUser2.save && postUser3.save && postUser4.save ? "Posts de Usuários criado." : "Erro ao criar \"Posts de usuários\"."
+# ======================================================================================================================
