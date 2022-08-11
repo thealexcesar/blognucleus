@@ -1,7 +1,40 @@
-<nav>
-  <ul class="nav flex nav-pills">
-<!--    <li class="nav-item"><%#= link_to "HOME", admin_posts_url, class: "nav-link #{"active" if params[:controller] == "admin/home"}"%></li>-->
-    <li class="nav-item"><%= link_to "POST", admin_posts_url, class: "nav-link #{"active" if params[:controller] == "admin/posts"}"%></li>
-    <li class="nav-item"><%= link_to "USER", admin_users_url, class: "nav-link #{"active" if params[:controller] == "admin/users"}"%></li>
-  </ul>
-</nav>
+<b class="logo-icon"><%= image_tag('logo.png', width:'80', alt:'Nucleus') %></b>
+<div class="ms-3 col-lg-4 col-md-4 col-xs-4">
+  <nav>
+    <ul class="nav flex nav-pills">
+      <li class="nav-item">
+        <%= link_to "Main", admin_main_index_path, class: "nav-link #{"active" if params[:controller] == "admin/main"}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('title.posts'), admin_posts_path, class: "nav-link #{"active" if params[:controller] == "admin/posts" || params[:controller] == "posts"}" %>
+      </li>
+      <li class="nav-item"> <%# FIXME! %>
+        <%= link_to t('activerecord.models.user.other'), "/admin/users", class: "nav-link #{"active" if params[:controller] == "admin/users"}" %>
+      </li>
+    </ul>
+  </nav>
+  <a class="nav-toggler waves-effect d-block d-md-none" href="javascript:void(0)"> <i class="ti-menu ti-close"></i> </a>
+</div>
+<div class="navbar-collapse collapse" id="">
+  <div class="navbar-nav ms-auto">
+    <div class=" in">
+      <% if params[:action] == "index" && params[:controller] == "admin/users" || params[:controller] == "admin/posts" || params[:controller] == "posts" %>
+        <form role="search" class="app-search d-none d-md-block me-2">
+          <%= get_filter %> <a href="" class="active"> <i class="fa fa-search me-4"></i> </a>
+        </form>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-lg-1 ">
+    <% if signed_in? %>
+      <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+      <img src="<%= image_path(current_user.nil? ? "logo.png" : "user-solid.svg") %>" alt="user-img" width="30" class="img-circle">
+      <span class="text-white font-medium">
+          <%= current_user.name.blank? ? truncate(current_user&.email, length: 10) : current_user&.name.split.first %>
+        </span>
+    <% else %>
+      <%= link_to "Login", "/users/sign_in", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

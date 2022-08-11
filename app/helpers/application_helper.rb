@@ -34,5 +34,12 @@ module ApplicationHelper
     model_name = controller_name.classify.underscore
     t("general.new_model_f", model: t("activerecord.models.#{model_name}.one"))
   end
+
+  def nl2br(text)
+    unless text.blank?
+      text = sanitize(text, tags: %w(a), attributes: %w(href data-toggle data-target data-remote))
+      text.gsub(/\n/, '<br />').html_safe
+    end
+  end
 end
 # ======================================================================================================================

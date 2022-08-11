@@ -193,7 +193,7 @@ pt-BR:
     login: "Entrar"
     name: "Nome"
     new: "Novo"
-    order_by: "Ordenar por mais recentes"
+    newest: "Mais recentes"
     update: "Atualizar"
     save: "Salvar"
     send_mail: "Enviar email"
@@ -217,6 +217,19 @@ pt-BR:
       create: "Salvar" # Criar %{model}
       submit: "Salvar" # Salvar %{model}
       update: "Salvar" # Atualizar %{model}"
+  main:
+    back_top: "Voltar ao topo"
+    posts:
+      drafts:
+        do_you_have_drafts: "Você tem <b>%{count}</b> rascunho(s) para publicar <small> %{icon} ou rejeitar</small>."
+        do_you_have_published: "Você tem <b>%{count}</b> Posts publicados."
+        none: "Nenhum post em rascunho para publicar."
+      publish: "Publicar"
+      reject: "Rejeitar"
+      status:
+        drafts: "Rascunhos"
+        published: "Publicados"
+    summary: "Resumo"
   number:
     currency:
       format:

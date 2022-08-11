@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [ :show, :edit, :update, :create_comment, :destroy ]
   before_action :set_comment, only: [ :show, :create_comment ]
+  before_action :authenticate_user!, except: [:index, :show, :create_comment]
 
   # ====================================================================================================================
   def index
@@ -11,7 +12,11 @@ class PostsController < ApplicationController
       values[:title] = "%#{params[:title].to_s.downcase}%"
     end
     query = [conditions.join(' AND '), values] unless values.empty?
-    @posts = Post.where(query).order("id ASC").paginate(page: params[:page], per_page: 4)
+    if signed_in? && current_user.user_type == "admin"
+      @posts = Post.where(query).order("id DESC").paginate(page: params[:page], per_page: 4)
+    else
+      @posts = Post.where(query).where(status: :published).order("id DESC").paginate(page: params[:page], per_page: 4)
+    end
   end
   # ====================================================================================================================
   def show
@@ -68,7 +73,7 @@ class PostsController < ApplicationController
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: Translate.destroyed_msg(controller_name.classify) }
+      format.html { redirect_to admin_posts_url, notice: Translate.destroyed_msg(controller_name.classify) }
       format.json { head :no_content }
     end
   end

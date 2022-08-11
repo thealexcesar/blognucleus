@@ -4,11 +4,14 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :posts
     resources :users
+    get '/main/index', to: 'main#index'
   end
 
   resources :posts do
+    get '/posts/order_by', on: :collection
     post 'create_comment', on: :collection
   end
+
 
   devise_for :users
   devise_scope :user do

@@ -1,8 +1,10 @@
 <div class="mt-3 container d-flex justify-content-center">
   <div class="container blog col-lg-9 col-md-10 col-sm-12 col-xs-12">
     <h1 class="mt-4">BLOG <%= fa_icon('angle-right', text: @post&.id) %></h1> <hr class="post-title margin-hr">
+    <%= link_to "teste ordenação", posts_order_by_posts_path(order: "created_at DESC"), remote: true %>
+    <br> order params <%= params[:order] %>
     <h3 class="col-lg-12 col-md-6 col-xs-6"> <%= @post&.title %> </h3>
-    <p class="col-lg-12 col-md-6 col-xs-6"> <%= @post&.body %> </p>
+    <p class="col-lg-12 col-md-6 col-xs-6"> <%= nl2br @post&.body %> </p>
     <%= link_to t('comment.back'), root_path, class: 'text-purple' %>
     <p>
       <strong><%= t('table.status') %>:</strong>
@@ -16,7 +18,7 @@
     <div class="d-flex justify-content-between">
       <h4><%= @post.comments&.count %> <%= @post&.comments.model_name.human(count: @post&.comments.count).upcase %></h4>
       <span class="small"><%= link_to "#" do %>
-        <%= t('general.order_by') %>
+        <%= t('general.newest') %>
         <%= fa_icon('angle-down') %>
         <% end %>
       </span>

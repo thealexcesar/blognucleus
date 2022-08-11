@@ -9,7 +9,7 @@
         <%= link_to t('title.posts'), posts_path, class: "nav-link #{"active" if params[:controller] == "admin/posts" || params[:controller] == "posts"}" %>
       </li>
       <li class="nav-item"> <%# FIXME! %>
-        <%= link_to t('general.contact'), "/admin/users", class: "nav-link #{"active" if params[:controller] == "admin/users"}" %>
+        <%= link_to t('general.contact'), root_path, class: "nav-link #{"active" if params[:controller] == "contact"}" %>
       </li>
     </ul>
   </nav>

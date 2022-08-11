@@ -1,33 +1,44 @@
 <h1 class="mt-4">BLOG</h1> <hr class="post-title margin-hr">
-<% unless @post.nil? %>
+<%= link_to new_model, new_post_path %>
 <table class="table table-stripped">
   <thead>
     <tr class="align-items-center">
       <th><%= t('activerecord.attributes.post.title') %></th>
       <th><%= t('activerecord.attributes.post.body') %></th>
       <th><%= t('post.author') %></th>
-      <th width="120px"><%= t('general.actions') %></th>
+      <th class="ps-3"><%= t('table.status') %></th>
+      <th class="text-center" width="120px"><%= t('general.actions') %></th>
     </tr>
   </thead>
   <tbody>
-    <% @posts.each do |post| %>
-    <tr>
-      <td><%= post&.title %></td>
-      <td><%= truncate(post&.body, length: 250) %></td>
-      <td><%= link_to post.user.name.nil? ? post.user&.email : post.user&.name, admin_user_path(post.user), class: 'text-purple' %></td>
-      <td>
-        <%= link_to fa_icon("eye"), admin_post_path(post), class: "btn btn-sm btn-success" %>
-        <%= link_to fa_icon("edit"), edit_admin_post_path(post), class: "btn btn-sm btn-primary" %> <%# todo! %>
-        <%= link_to fa_icon("trash"), admin_post_path(post), class: "btn btn-sm btn-danger", method: :delete, data: { confirm: t('confirm.destroy') } %>
-      </td>
-    </tr>
+    <% if @posts.count > 0 %>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post&.title %></td>
+          <td><%= truncate(post&.body, length: 70) %></td>
+          <td><%= link_to post.user.name.nil? ? post.user&.email : post.user&.name, admin_user_path(post.user), class: 'text-purple' %></td>
+          <td>
+            <span class="<%= badge_color(post&.status) %>">
+              <%= t("activerecord.attributes.statuses.#{post.status}") unless post.status.nil?%>
+            </span>
+          </td>
+          <td class="right">
+            <%= link_to fa_icon("eye"), admin_post_path(post), class: "btn btn-xs btn-success" %>
+            <%= link_to fa_icon("edit"), edit_post_path(post), class: "btn btn-xs btn-primary" %> <%# todo! %>
+            <%= link_to fa_icon("trash"), post_path(post), class: "btn btn-xs btn-danger", method: :delete, data: { confirm: t('confirm.destroy') } %>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="10"> <p class="bg-info" style="padding:5px; margin:0;"><%= t('general.no_register_found') %></p> </td>
+      </tr>
+    <% end %>
   </tbody>
-  <% end %>
+
 </table>
-<% end %>
 <div class="d-flex justify-content-end">
   <div class="style-pagination">
     <%= will_paginate @posts, previous_label: fa_icon('angle-left', text: t('will_paginate.prev')), next_label: t('will_paginate.next', icon: fa_icon('angle-right')) %>
   </div>
 </div>
-<%= link_to new_model, new_admin_post_path %>

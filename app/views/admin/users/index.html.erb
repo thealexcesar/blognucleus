@@ -1,12 +1,17 @@
-<h1 class="mt-4"><%= t('activerecord.models.user.other') %></h1> <hr class="post-title margin-hr">
-<%= link_to t('general.new_model', model: t('activerecord.models.user.one')), new_admin_user_path %>
+<div class="d-flex justify-content-between align-items-center">
+  <div>
+    <h1 class="mt-4 h2"><%= t('activerecord.models.user.other') %></h1>
+    <hr class="post-title margin-hr">
+  </div>
+  <%= link_to t('general.new_model', model: t('activerecord.models.user.one')), new_admin_user_path, class: 'btn btn-primary btn-sm' %>
+</div>
 <table class="table table-stripped">
   <thead>
     <tr class="align-items-center">
       <th><%= t('general.name') %></th>
       <th><%= t('activerecord.attributes.user.email') %></th>
       <th><%= t('activerecord.attributes.user.user_type') %></th>
-      <th width="120px"><%= t('general.actions') %></th>
+      <th class="text-center" width="120px"><%= t('general.actions') %></th>
     </tr>
   </thead>
   <tbody>
@@ -16,10 +21,10 @@
       <td><%= user&.name %></td>
       <td><%= user&.email %></td>
       <td><%= t("activerecord.attributes.user.user_types.#{user.user_type}") %></td>
-      <td>
-        <%= link_to fa_icon("eye"), admin_user_path(user), class: "btn btn-sm btn-success" %>
-        <%= link_to fa_icon("edit"), edit_admin_user_path(user), class: "btn btn-sm btn-primary" %> <%# todo! %>
-        <%= link_to fa_icon("trash"), admin_user_path(user), class: "btn btn-sm btn-danger", method: :delete, data: { confirm: t('confirm.destroy') } %>
+      <td class="right">
+        <%= link_to fa_icon("eye"), admin_user_path(user), class: "btn btn-xs btn-success" %>
+        <%= link_to fa_icon("edit"), edit_admin_user_path(user), class: "btn btn-xs btn-primary" %> <%# todo! %>
+        <%= link_to fa_icon("trash"), admin_user_path(user), class: "btn btn-xs btn-danger", method: :delete, data: { confirm: t('confirm.destroy') } %>
       </td>
     </tr>
     <% end %>

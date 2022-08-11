@@ -13,7 +13,7 @@
     <div class="d-flex justify-content-between">
       <h4><%= @post.comments&.count %> <%= @post&.comments.model_name.human(count: @post&.comments.count).upcase %></h4>
       <span class="small"><%= link_to "#" do %>
-        <%= t('general.order_by') %>
+        <%= t('general.newest') %>
           <%= fa_icon('angle-down') %>
         <% end %>
       </span>

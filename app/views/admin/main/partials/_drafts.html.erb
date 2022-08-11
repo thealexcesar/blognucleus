@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h3 id="drafts"><%= link_to t('main.posts.status.drafts'), "#top", title: t('main.back_top') %></h3>
+  <span class="text-purple"><%= t('main.posts.drafts.do_you_have_drafts', count: @drafts&.count, icon: fa_icon('angle-right')).html_safe %></span>
+</div>
+
+<table class="table table-stripped">
+  <thead>
+  <tr class="align-items-center">
+    <th><%= t('activerecord.attributes.post.title') %></th>
+    <th><%= t('activerecord.attributes.post.body') %></th>
+    <th><%= t('post.author') %></th>
+    <th class="text-center" colspan="2" width="120px"><%= t('general.actions') %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if @drafts.count > 0 %>
+    <% @drafts.each do |post| %>
+      <tr>
+        <td><%= post&.title %></td>
+        <td><%= truncate(post&.body, length: 70) %></td>
+        <td><%= link_to post.user.name.nil? ? post.user&.email : post.user&.name.split.first, admin_user_path(post.user), class: 'text-purple' %></td>
+        <td class="right">
+          <span class="d-flex justify-content-around">
+            <%= link_to fa_icon("eye"), admin_post_path(post), class: "col-2 btn btn-xs btn-success" %>
+            <div class="col-10 btn-group">
+              <%= link_to t('main.posts.publish'), edit_post_path(post), class: "btn btn-xs btn-primary" %> <%# todo! %>
+              <%= link_to t('main.posts.reject'), post_path(post), class: "btn btn-xs btn-danger", method: :delete, data: { confirm: t('confirm.destroy') } %>
+            </div>
+          </span>
+        </td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="10"> <p class="bg-info" style="padding:5px; margin:0;"><%= t('main.posts.drafts.none') %></p> </td>
+    </tr>
+  <% end %>
+  </tbody>
+
+</table>
