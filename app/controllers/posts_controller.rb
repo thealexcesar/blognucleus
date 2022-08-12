@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [ :index, :show, :create_comment ]
+  before_action :require_user, :admin?, except: [ :index, :show, :create_comment ]
   before_action :set_post, only: [ :show, :edit, :update, :create_comment, :destroy, :destroy_comment ]
   before_action :set_comment, only: [ :show, :create_comment ]
-  before_action :authenticate_user!, except: [ :index, :show, :create_comment ]
 
   # ====================================================================================================================
   def index

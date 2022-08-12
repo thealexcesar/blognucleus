@@ -1,5 +1,6 @@
 <b class="logo-icon"><%= image_tag('logo.png', width:'80', alt:'Nucleus') %></b>
 <div class="ms-3 col-lg-4 col-md-4 col-xs-4">
+
   <nav>
     <ul class="nav flex nav-pills">
       <li class="nav-item">
@@ -15,6 +16,7 @@
   </nav>
   <a class="nav-toggler waves-effect d-block d-md-none" href="javascript:void(0)"> <i class="ti-menu ti-close"></i> </a>
 </div>
+
 <div class="navbar-collapse collapse" id="">
   <div class="navbar-nav ms-auto">
     <div class=" in">
@@ -26,15 +28,31 @@
     </div>
   </div>
 
-  <div class="col-lg-1 ">
-      <% if signed_in? %>
-      <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-        <img src="<%= image_path(current_user.nil? ? "logo.png" : "user-solid.svg") %>" alt="user-img" width="30" class="img-circle">
-        <span class="text-white font-medium">
-          <%= current_user.name.blank? ? truncate(current_user&.email, length: 10) : current_user&.name.split.first %>
+  <div class="col-lg-1">
+    <div class="dropdown">
+      <div class="btn-group">
+        <button class="btn btn-secondary">
+        <span>
+          <% if current_user.nil? %>
+            <span>Login</span>
+          <% else %>
+            <img src="<%= image_path("user-solid.svg") %>" alt="user-img" width="20" class="img-circle">
+          <% end %>
         </span>
-      <% else %>
-        <%= link_to "Login", "/users/sign_in", class: 'btn btn-primary' %>
-      <% end %>
+        </button>
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <%= fa_icon("caret-down") %>
+        </button>
+        <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+          <% if signed_in? %>
+            <li class="ps-3"><%= current_user&.name.split.first %></li>
+            <li><%= link_to "Sign out", destroy_user_session_path, class: 'dropdown-item', method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Sign in", "/users/sign_in", class: 'dropdown-item' %></li>
+            <li><%= link_to "Sign up", "/users/sign_up", class: 'dropdown-item' %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
+  </div>
 </div>

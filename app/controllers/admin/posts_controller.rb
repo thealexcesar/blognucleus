@@ -1,4 +1,6 @@
 class Admin::PostsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :require_user, :admin?
   before_action :set_post, only: [:show, :show_draft]
   # ====================================================================================================================
   def index
