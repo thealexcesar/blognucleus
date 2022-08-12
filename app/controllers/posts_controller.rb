@@ -13,11 +13,7 @@ class PostsController < ApplicationController
       values[:title] = "%#{params[:title].to_s.downcase}%"
     end
     query = [conditions.join(' AND '), values] unless values.empty?
-    # if signed_in? && current_user.user_type == "admin"
-    #   @posts = Post.where(query).order("id DESC").paginate(page: params[:page], per_page: 4)
-    # else
-      @posts = Post.where(query).where(status: :published).order("id DESC").paginate(page: params[:page], per_page: 4)
-    # end
+    @posts = Post.where(query).where(status: :published).order("id DESC").paginate(page: params[:page], per_page: 10)
   end
   # ====================================================================================================================
   def show
