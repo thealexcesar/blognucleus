@@ -53,8 +53,12 @@ pt-BR:
     enter:
       comment: "Digite um comentário"
       name: "Digite seu nome"
+    error:
+      creating: "Erro ao crir comentário."
+      delete: "Erro ao crir comentário."
     successfully:
       created: "Comentário criado com sucesso."
+      destroyed: "Comentário deletado com sucesso."
     to_comment: "Comentar"
   confirm:
     destroy: 'Tem certeza que deseja deletar?'
@@ -222,7 +226,7 @@ pt-BR:
     posts:
       drafts:
         do_you_have_drafts: "Você tem <b>%{count}</b> rascunho(s) para publicar <small> %{icon} ou rejeitar</small>."
-        do_you_have_published: "Você tem <b>%{count}</b> Posts publicados."
+        do_you_have_published: "Você tem <b>%{count}</b> Post(s) publicados."
         none: "Nenhum post em rascunho para publicar."
       publish: "Publicar"
       reject: "Rejeitar"

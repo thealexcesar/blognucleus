@@ -138,13 +138,13 @@ Todo:
 ### Admin
 
 - [x] Tela de login
-- [ ] Gerenciamento de usuários (CRUD de users)
-- [ ] Gerenciamento do blog (CRUD de posts)
+- [x] Gerenciamento de usuários (CRUD de users)
+- [x] Gerenciamento do blog (CRUD de posts)
 
 ### Frontend do blog
 
 - [x] Todas as noticias
-- [ ] Busca por titulo da noticia
+- [x] Busca por titulo da noticia
 - [x] Comentarios na noticia
 - [ ] (Admin) pode excluir o comentario
 

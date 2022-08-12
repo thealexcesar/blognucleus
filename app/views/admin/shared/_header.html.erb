@@ -6,9 +6,9 @@
         <%= link_to "Main", admin_main_index_path, class: "nav-link #{"active" if params[:controller] == "admin/main"}" %>
       </li>
       <li class="nav-item">
-        <%= link_to t('title.posts'), admin_posts_path, class: "nav-link #{"active" if params[:controller] == "admin/posts" || params[:controller] == "posts"}" %>
+        <%= link_to "Posts", admin_posts_path, class: "nav-link #{"active" if params[:controller] == "admin/posts" || params[:controller] == "posts"}" %>
       </li>
-      <li class="nav-item"> <%# FIXME! %>
+      <li class="nav-item">
         <%= link_to t('activerecord.models.user.other'), "/admin/users", class: "nav-link #{"active" if params[:controller] == "admin/users"}" %>
       </li>
     </ul>
@@ -25,10 +25,9 @@
       <% end %>
     </div>
   </div>
-
-  <div class="col-lg-1 ">
+  <div class="col-lg-2">
     <% if signed_in? %>
-      <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+      <%#= link_to "Sign out", destroy_user_session_path, :method => :delete %>
       <img src="<%= image_path(current_user.nil? ? "logo.png" : "user-solid.svg") %>" alt="user-img" width="30" class="img-circle">
       <span class="text-white font-medium">
           <%= current_user.name.blank? ? truncate(current_user&.email, length: 10) : current_user&.name.split.first %>

@@ -1,4 +1,4 @@
-<h1 class="mt-4">BLOG</h1> <hr class="post-title margin-hr">
+<h1 class="mt-4">Posts</h1> <hr class="post-title margin-hr">
 <%= link_to new_model, new_post_path %>
 <table class="table table-stripped">
   <thead>
@@ -23,8 +23,8 @@
             </span>
           </td>
           <td class="right">
-            <%= link_to fa_icon("eye"), admin_post_path(post), class: "btn btn-xs btn-success" %>
-            <%= link_to fa_icon("edit"), edit_post_path(post), class: "btn btn-xs btn-primary" %> <%# todo! %>
+            <%= link_to fa_icon("eye"), post_path(post), class: "btn btn-xs btn-success" %>
+            <%= link_to fa_icon("edit"), edit_post_path(post), class: "btn btn-xs btn-primary" %>
             <%= link_to fa_icon("trash"), post_path(post), class: "btn btn-xs btn-danger", method: :delete, data: { confirm: t('confirm.destroy') } %>
           </td>
         </tr>

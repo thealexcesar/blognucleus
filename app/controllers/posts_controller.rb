@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [ :show, :edit, :update, :create_comment, :destroy ]
+  before_action :set_post, only: [ :show, :edit, :update, :create_comment, :destroy, :destroy_comment ]
   before_action :set_comment, only: [ :show, :create_comment ]
-  before_action :authenticate_user!, except: [:index, :show, :create_comment]
+  before_action :authenticate_user!, except: [ :index, :show, :create_comment ]
 
   # ====================================================================================================================
   def index
@@ -44,19 +44,6 @@ class PostsController < ApplicationController
     end
   end
   # ====================================================================================================================
-  def create_comment
-    @post = Post.find_by_id params[:comment][:post_id]
-    @comment = @post.comments.new(comment_params)
-
-    if @comment.save
-      @texto = I18n.t('comment.successfully.created')
-    end
-    respond_to do |f|
-      f.html { redirect_to post_url(@post), notice: @texto }
-      f.json { render json: @post.errors, status: :unprocessable_entity }
-    end
-  end
-  # ====================================================================================================================
   def update
     respond_to do |format|
       if @post.update(post_params)
@@ -78,7 +65,36 @@ class PostsController < ApplicationController
     end
   end
   # ====================================================================================================================
-  # = PRIVATE ==========================================================================================================
+  # COMMENT ============================================================================================================
+  # ====================================================================================================================
+  def create_comment
+    @post = Post.find_by_id params[:comment][:post_id]
+    @comment = @post.comments.new(comment_params)
+    @texto = I18n.t('comment.error.creating')
+
+    if @comment.save
+      @texto = I18n.t('comment.successfully.created')
+    end
+    respond_to do |f|
+      f.html { redirect_to post_url(@post), notice: @texto }
+      f.json { render json: @post.errors, status: :unprocessable_entity }
+    end
+  end
+  # ====================================================================================================================
+  def destroy_comment
+    # @post = Post.find_by_id params[:comment][:post_id]
+    @comment = Comment.find_by_id params[:id]
+
+    respond_to do |format|
+      format.html { redirect_to admin_posts_url, notice: I18n.t('comment.successfully.destroyed') }
+      format.json { head :no_content }
+    end
+  end
+  # FIM COMMENT ========================================================================================================
+
+
+  # ====================================================================================================================
+  # PRIVATE ============================================================================================================
   # ====================================================================================================================
   private
     # Use callbacks to share common setup or constraints between actions.

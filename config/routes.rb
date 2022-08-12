@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
-  resources :posts
+
   root to: "home#index"
+  get '/home/contact', to: 'home#contact'
+
   namespace :admin do
     resources :posts
     resources :users
     get '/main/index', to: 'main#index'
   end
 
+  # resources :posts
   resources :posts do
     get '/posts/order_by', on: :collection
     post 'create_comment', on: :collection
+    delete 'destroy_comment', on: :collection
   end
 
 

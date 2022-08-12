@@ -1,10 +1,11 @@
 <div>
-  <%= link_to fa_icon("instagram"), root_path %>
-  <%= link_to fa_icon("facebook-f"), root_path, class:'px-2' %>
-  <%= link_to fa_icon("whatsapp"), root_path %>
+  <a class="px-2" href="https://www.linkedin.com/company/nucleusapp" target="_blank"><%= fa_icon("linkedin") %></a>
+  <a class="px-2" href="https://www.instagram.com/nucleusapp/" target="_blank"><%= fa_icon("instagram") %></a>
+  <a class="px-2" href="https://wa.me/554799999709" target="_blank" height="auto"> <%= fa_icon("whatsapp") %> </a>
 </div>
-<%#= link_to 'Sobre', root_path %>
-<%#= link_to 'Contato', root_path %>
 <bloquote class="">
-  <small> <b>Copyright</b> Nucleus <%= Time.current.year %>&copy; - <%= t('general.copyright') %>.</small>
+  <small> <b>Copyright</b>
+    <a href="https://appnucleus.com.br/">Nucleus</a>
+    <%= Time.current.year %>&copy; - <%= t('general.copyright') %>.
+  </small>
 </bloquote>
