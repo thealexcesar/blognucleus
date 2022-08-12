@@ -307,8 +307,9 @@ pt-BR:
     pm: 'pm'
   title:
     post: "Notícia"
-    last_post: "Última notícia %{icon} <small style='opacity:0.8;'> visualizar todas</small>"
+    last_post: "Última notícia"
     posts: "Notícias"
+    see_all: "Mostrar todos os <b>%{count}</b> Post(s)"
 #  user:
 #    user: "Usuário"
   will_paginate:

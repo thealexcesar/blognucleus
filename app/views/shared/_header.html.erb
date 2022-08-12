@@ -4,13 +4,13 @@
   <nav>
     <ul class="nav flex nav-pills">
       <li class="nav-item">
-        <%= link_to "Home", root_path, class: "nav-link #{"active" if params[:controller] == "home" && params[:action] == "index" }" %>
+        <%= link_to "Main", admin_main_index_path, class: "nav-link #{"active" if params[:controller] == "admin/main"}" %>
       </li>
       <li class="nav-item">
-        <%= link_to t('title.posts'), posts_path, class: "nav-link #{"active" if params[:controller] == "admin/posts" || params[:controller] == "posts"}" %>
+        <%= link_to "Posts", admin_posts_path, class: "nav-link #{"active" if params[:controller] == "admin/posts" || params[:controller] == "posts"}" %>
       </li>
-      <li class="nav-item"> <%# FIXME! %>
-        <%= link_to t('general.contact'), home_contact_path, class: "nav-link #{"active" if params[:action] == "contact"}" %>
+      <li class="nav-item">
+        <%= link_to t('activerecord.models.user.other'), "/admin/users", class: "nav-link #{"active" if params[:controller] == "admin/users"}" %>
       </li>
     </ul>
   </nav>
@@ -29,30 +29,27 @@
   </div>
 
   <div class="col-lg-1">
-    <div class="dropdown">
-      <div class="btn-group">
-        <button class="btn btn-secondary">
-          <span>
-            <% if current_user.nil? %>
-              <span>Login</span>
-            <% else %>
-              <img src="<%= image_path("user-solid.svg") %>" alt="user-img" width="20" class="img-circle">
-            <% end %>
-          </span>
-        </button>
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          <%= fa_icon("caret-down") %>
-        </button>
-        <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-          <% if signed_in? %>
-            <li class="ps-3"><%= current_user&.name.split.first %></li>
-            <li><%= link_to "Sign out", destroy_user_session_path, class: 'dropdown-item', method: :delete %></li>
-          <% else %>
-            <li><%= link_to "Sign in", "/users/sign_in", class: 'dropdown-item' %></li>
-            <li><%= link_to "Sign up", "/users/sign_up", class: 'dropdown-item' %></li>
-          <% end %>
-         </ul>
-      </div>
+    <div class="btn-group">
+      <button class="btn btn-secondary">
+        <span>
+          <img src="<%= image_path("user-solid.svg") %>" alt="user-img" width="20" class="img-circle">
+        </span>
+      </button>
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <%= fa_icon("caret-down") %>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <% if signed_in? %>
+          <li class="ps-3"><%= current_user&.name.split.first %></li>
+          <li><%= link_to "Sign out", destroy_user_session_path, class: 'dropdown-item', method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign in", "/users/sign_in", class: 'dropdown-item' %></li>
+          <li><%= link_to "Sign up", "/users/sign_up", class: 'dropdown-item' %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
+
+</div>
+
 </div>

@@ -1,19 +1,25 @@
-<% url_form = @post.new_record? ? admin_posts_path : admin_post_path(@post) %>
-<%= form_for(@post, url: url_form, html: { class: "form-user open-loading-submit", role: "form"}) do |f| %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.hidden_field :status, value: :draft %>
-
-    <div class="field">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </div>
-
-    <div class="field">
-      <%= f.label :body %>
-      <%= f.text_area :body %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit %>
+<%= form_with(model: post, local: true) do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :status, value: :draft %>
+  <div class="form-group mt-3">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control", type: "text", placeholder: t('general.name') %>
+  </div>
+  <div class="form-group mt-3">
+    <%= f.label :body %>
+    <%= f.text_field :body, class: "form-control", type: "text", placeholder: "email" %>
+  </div>
+  <% if current_user.user_type == "admin" %>
+    <div class="form-group mt-3">
+      <label><%= t('table.type') %>:</label>
+      <%= f.label :status %>
+      <% status_post = [[t('activerecord.attributes.statuses.draft'), :draft], [t('activerecord.attributes.statuses.published'), :published]] %>
+      <%= f.select :status, status_post, class: "form-control input-sm", type: "text", placeholder: t('table.status') %>
     </div>
   <% end %>
+  <div class="form-group mt-3">
+    <%= f.submit t('btn.save'), class: "btn btn-sm btn-primary pull-right m-t-n-xs", value: t('btn.save') %>
+  </div>
+
+  <div class="clearfix"></div>
+<% end %>

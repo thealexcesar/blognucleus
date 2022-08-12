@@ -4,22 +4,21 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 </p>
 <p><hr class="mt-3 post margin-hr"></p>
 <%= link_to posts_path do %>
-  <div class=" text-purple mt-4 d-flex align-items-center">
-    <h2 class="d-inline"><%= t('title.last_post', icon: fa_icon("angle-right")).html_safe %> </h2>
+  <div class=" mt-4 d-flex justify-content-between align-items-center">
+    <h4 class="d-inline text-inherit"><%= t('title.last_post')%></h4>
+    <h4 class="d-inline text-purple"> <small><%= link_to t('title.see_all', count: @posts.count).html_safe, posts_path %></small></h4>
   </div>
 <% end %>
-    <hr class="post-title margin-hr" style="width: inherit">
+    <hr class="post-title margin-hr mt-1" style="width: inherit">
 <div>
-  <% unless @last_post.nil? %>
-    <p><%= @last_post&.title %></p>
-    <div class="d-flex justify-content-between align-items-center">
-      <span><%= @last_post&.body %></span>
-      <span>
-        <%= t('post.author') %>:
-        <%= link_to @last_post.user.name.nil? ? @last_post.user&.email : @last_post.user&.name, '#', class: 'text-purple' %>
-      </span>
-    </div>
-    <br>
-    <p><hr class="post margin-hr"></p>
-  <% end %>
+  <p><%= @last_post.title %></p>
+  <div class="d-flex justify-content-between align-items-center">
+    <span><%= @last_post&.body %></span>
+    <span>
+      <%= t('post.author') %>:
+      <%= link_to @last_post.user.name.nil? ? @last_post.user&.email : @last_post.user&.name, '#', class: 'text-purple' %>
+    </span>
+  </div>
+  <br>
+  <p><hr class="post margin-hr"></p>
 </div>

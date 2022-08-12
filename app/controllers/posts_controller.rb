@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [ :index, :show, :create_comment ]
-  before_action :require_user, :admin?, except: [ :index, :show, :create_comment ]
+  before_action :authenticate_user!, only: [ :update, :destroy, :destroy_comment  ], except: :index
+  before_action :require_user, :admin?, only: [ :update, :destroy, :destroy_comment  ], except: :index
   before_action :set_post, only: [ :show, :edit, :update, :create_comment, :destroy, :destroy_comment ]
   before_action :set_comment, only: [ :show, :create_comment ]
 
@@ -13,11 +13,11 @@ class PostsController < ApplicationController
       values[:title] = "%#{params[:title].to_s.downcase}%"
     end
     query = [conditions.join(' AND '), values] unless values.empty?
-    if signed_in? && current_user.user_type == "admin"
-      @posts = Post.where(query).order("id DESC").paginate(page: params[:page], per_page: 4)
-    else
+    # if signed_in? && current_user.user_type == "admin"
+    #   @posts = Post.where(query).order("id DESC").paginate(page: params[:page], per_page: 4)
+    # else
       @posts = Post.where(query).where(status: :published).order("id DESC").paginate(page: params[:page], per_page: 4)
-    end
+    # end
   end
   # ====================================================================================================================
   def show

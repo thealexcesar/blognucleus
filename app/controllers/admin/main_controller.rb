@@ -2,6 +2,8 @@ class Admin::MainController < ApplicationController
   before_action :authenticate_user!
   before_action :require_user, :admin?
 
+  # render layout: "main"
+
   # ====================================================================================================================
   def index
     @posts = Post.all.paginate(page: params[:page], per_page: 4)

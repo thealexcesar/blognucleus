@@ -1,5 +1,9 @@
-<h1>New Post</h1>
+<div class="container forms p-3 mt-4">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1><%= new_model %></h1>
+    <%= link_to t('general.back'), posts_path, class: 'btn btn-dark ' %>
+  </div>
 
-<%= render 'form', post: @post %>
+  <%= render 'posts/partials/form', post: @post %>
+</div>
 
-<%= link_to 'Back', posts_path %>

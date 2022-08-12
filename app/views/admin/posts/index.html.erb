@@ -1,5 +1,8 @@
-<h1 class="mt-4">Posts</h1> <hr class="post-title margin-hr">
-<%= link_to new_model, new_post_path %>
+<div class="text-purple d-flex justify-content-between align-items-center">
+  <h1 class="mt-4"><%= t('title.posts') %></h1>
+  <%= link_to new_model, new_post_path, class: 'btn btn-primary mt-3' %>
+</div>
+<hr class="post-title margin-hr">
 <table class="table table-stripped">
   <thead>
     <tr class="align-items-center">
