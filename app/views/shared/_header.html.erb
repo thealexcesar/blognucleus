@@ -32,13 +32,13 @@
     <div class="dropdown">
       <div class="btn-group">
         <button class="btn btn-secondary">
-        <span>
-          <% if current_user.nil? %>
-            <span>Login</span>
-          <% else %>
-            <img src="<%= image_path("user-solid.svg") %>" alt="user-img" width="20" class="img-circle">
-          <% end %>
-        </span>
+          <span>
+            <% if current_user.nil? %>
+              <span>Login</span>
+            <% else %>
+              <img src="<%= image_path("user-solid.svg") %>" alt="user-img" width="20" class="img-circle">
+            <% end %>
+          </span>
         </button>
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           <%= fa_icon("caret-down") %>
@@ -51,7 +51,7 @@
             <li><%= link_to "Sign in", "/users/sign_in", class: 'dropdown-item' %></li>
             <li><%= link_to "Sign up", "/users/sign_up", class: 'dropdown-item' %></li>
           <% end %>
-        </ul>
+         </ul>
       </div>
     </div>
   </div>

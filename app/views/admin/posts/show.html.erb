@@ -1,9 +1,9 @@
 <div class="mt-3 container d-flex justify-content-center">
   <div class="container blog col-lg-9 col-md-10 col-sm-12 col-xs-12">
+    <%= link_to t('comment.back'), admin_posts_path, class: 'text-purple' %>
     <h1 class="mt-4">BLOG <%= fa_icon('angle-right', text: @post&.id) %></h1> <hr class="post-title margin-hr">
     <h3 class="col-lg-12 col-md-6 col-xs-6"> <%= @post&.title %> </h3>
     <p class="col-lg-12 col-md-6 col-xs-6"> <%= @post&.body %> </p>
-    <%= link_to t('comment.back'), admin_posts_path, class: 'text-purple' %>
     <span class="pull-right small">
       <%= t('post.author') %>:
       <%= link_to @post.user.name.nil? ? @post.user&.email : @post.user&.name, "/admin/users", class: 'text-purple' unless @post.nil? %>

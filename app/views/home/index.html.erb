@@ -12,13 +12,13 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 <div>
   <% unless @last_post.nil? %>
     <p><%= @last_post&.title %></p>
-    <span>
-      <%= @last_post&.body %><br>
-      <%= link_to t('btn.show'), @last_post, class: 'text-purple' %>
-    </span>
-    <span class="pull-right">
-        <%= t('post.author') %>: <%= link_to @last_post.user.name.nil? ? @last_post.user&.email : @last_post.user&.name, '#', class: 'text-purple' %>
-    </span>
+    <div class="d-flex justify-content-between align-items-center">
+      <span><%= @last_post&.body %></span>
+      <span>
+        <%= t('post.author') %>:
+        <%= link_to @last_post.user.name.nil? ? @last_post.user&.email : @last_post.user&.name, '#', class: 'text-purple' %>
+      </span>
+    </div>
     <br>
     <p><hr class="post margin-hr"></p>
   <% end %>

@@ -1,5 +1,15 @@
-<div class="container">
-  <h1 class="col-lg-6 col-md-6 col-xs-6"> <%= @user&.name %> </h1>
-  <p class="col-lg-6 col-md-6 col-xs-6"> <%= @user&.email %> </p>
-<!--  <p> <strong>Name:</strong> <%#= @post&.user.name %> </p>-->
+<div class="mt-3 container d-flex justify-content-center">
+  <div class="container blog col-lg-9 col-md-10 col-sm-12 col-xs-12">
+    <div class="d-flex justify-content-between align-items-center">
+      <h1 class="mt-4"><%= t('activerecord.models.user.one') %><%= fa_icon('angle-right', text: @user&.id) %></h1>
+      <span><%= link_to t('general.back'), admin_users_path, class: 'text-white btn btn-dark text-purple mt-3' %></span>
+    </div>
+    <hr class="post-title margin-hr">
+    <p class="col-lg-12 col-md-6 col-xs-6"><b>ID: </b> <%= @user&.id %> </p>
+    <p class="col-lg-12 col-md-6 col-xs-6"><b><%= t('general.name') %>: </b> <%= @user&.name %> </p>
+    <p class="col-lg-12 col-md-6 col-xs-6"><b><%= t('activerecord.attributes.user.email') %>: </b> <%= @user&.email %> </p>
+    <p class="col-lg-12 col-md-6 col-xs-6"><b><%= t('activerecord.attributes.user.created_at') %>: </b> <%= l(@user&.created_at, format: :long) %> </p>
+
+    <p> <hr class="mt-3 post margin-hr"> </p>
+  </div>
 </div>

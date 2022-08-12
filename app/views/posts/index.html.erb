@@ -1,4 +1,4 @@
-<h1 class="mt-4">BLOG</h1> <hr class="post-title margin-hr">
+<h1 class="mt-4"><%= t('title.posts') %></h1> <hr class="post-title margin-hr">
 <!--<%#= link_to "teste ordenação", posts_path(order: "created_at DESC") %> <br> <%#= params[:order] %>-->
 <% @posts.each do |post| %>
 <div>
@@ -14,8 +14,8 @@
   <p><hr class="post margin-hr"></p>
 </div>
   <% if signed_in? && current_user.user_type == :admin %>
-    <h2><%= link_to 'Edit', edit_post_path(post) %></h2>
-    <h2><%= link_to 'Destroy', post, method: :delete, data: { confirm: t('confirm.destroy') } %></h2>
+    <h2><%= link_to t('btn.edit'), edit_post_path(post) %></h2>
+    <h2><%= link_to t('btn.delete'), post, method: :delete, data: { confirm: t('confirm.destroy') } %></h2>
   <% end %>
 <% end %>
 <div class="d-flex justify-content-end">
