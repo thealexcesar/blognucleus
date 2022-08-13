@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/home/contact', to: 'home#contact'
 
   namespace :admin do
+    resources :main
     resources :posts
     resources :users
     get '/main/index', to: 'main#index'
@@ -18,9 +19,9 @@ Rails.application.routes.draw do
 
 
   devise_for :users
-  devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
-  end
+  # devise_scope :user do
+  #   get '/users/sign_out' => 'devise/sessions#destroy'
+  # end
 
   # mount Ckeditor::Engine => '/ckeditor'
 end

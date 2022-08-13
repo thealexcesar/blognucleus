@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :require_user, :admin?
   before_action :set_user, only: [ :show, :edit, :update, :destroy ]
-
+  layout 'admin'
   # ====================================================================================================================
   def index
     conditions = []

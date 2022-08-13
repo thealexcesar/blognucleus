@@ -48,6 +48,7 @@
     <orderEntry type="library" scope="PROVIDED" name="bundler (v2.3.14, rbenv: 2.7.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="byebug (v11.1.3, rbenv: 2.7.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ckeditor (v5.1.1, rbenv: 2.7.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="colorize (v0.8.1, rbenv: 2.7.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="concurrent-ruby (v1.1.10, rbenv: 2.7.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, rbenv: 2.7.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="devise (v4.7.1, rbenv: 2.7.6) [gem]" level="application" />
@@ -96,6 +97,8 @@
     <orderEntry type="library" scope="PROVIDED" name="thor (v1.2.1, rbenv: 2.7.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thread_safe (v0.3.6, rbenv: 2.7.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tilt (v2.0.11, rbenv: 2.7.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tty-cursor (v0.7.1, rbenv: 2.7.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tty-spinner (v0.9.3, rbenv: 2.7.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="turbolinks (v5.2.1, rbenv: 2.7.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="turbolinks-source (v5.2.0, rbenv: 2.7.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v1.2.10, rbenv: 2.7.6) [gem]" level="application" />
@@ -295,6 +298,12 @@
           <RakeTaskImpl id="ckeditor">
             <subtasks>
               <RakeTaskImpl description="Create nondigest versions of all ckeditor digest assets" fullCommand="ckeditor:nondigest" id="nondigest" />
+            </subtasks>
+          </RakeTaskImpl>
+          <RakeTaskImpl id="create">
+            <subtasks>
+              <RakeTaskImpl description="Seed Post" fullCommand="create:post" id="post" />
+              <RakeTaskImpl description="Seed users" fullCommand="create:user" id="user" />
             </subtasks>
           </RakeTaskImpl>
           <RakeTaskImpl id="db">
