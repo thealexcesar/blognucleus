@@ -1,3 +1,6 @@
+# para drop create migrate seed e task.
+# TODO: $ rails create:dbseed
+# Find me: lib/tasks/create.rake
 PASS = "123123"
 admin = User.new(
   name: "Admin",
@@ -8,6 +11,5 @@ admin = User.new(
 )
 puts admin.save ? "Admin criado." : "Erro ao criar \"admin\" #{admin.errors.full_messages}."
 
-# Check: lib/tasks/create.rake
 puts "Criar Usuários e Posts: $ rails create:user create:post"
 

@@ -13,7 +13,7 @@ class Admin::PostsController < ApplicationController
       values[:title] = "%#{params[:title].to_s.downcase}%"
     end
     query = [conditions.join(' AND '), values] unless values.empty?
-    @posts = Post.where(query).order("id DESC").paginate(page: params[:page], per_page: 4)
+    @posts = Post.where(query).order("created_at DESC").paginate(page: params[:page], per_page: 8)
   end
   # ====================================================================================================================
   def show

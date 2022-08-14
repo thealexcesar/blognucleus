@@ -8,18 +8,22 @@
     <tr class="align-items-center">
       <th><%= t('activerecord.attributes.post.title') %></th>
       <th><%= t('activerecord.attributes.post.body') %></th>
+      <th><%= t('activerecord.attributes.post.category') %></th>
+      <th><%= t('activerecord.attributes.post.top') %></th>
       <th><%= t('post.author') %></th>
       <th class="ps-3"><%= t('table.status') %></th>
-      <th class="text-center" width="120px"><%= t('general.actions') %></th>
+      <th class="text-center"><%= t('general.actions') %></th>
     </tr>
   </thead>
   <tbody>
     <% if @posts.count > 0 %>
       <% @posts.each do |post| %>
         <tr>
-          <td><%= post&.title %></td>
-          <td><%= truncate(post&.body, length: 70) %></td>
-          <td><%= link_to post.user.name.nil? ? post.user&.email : post.user&.name, admin_user_path(post.user), class: 'text-purple' %></td>
+          <td><%= truncate(post&.title, length: 30) %></td>
+          <td><%= truncate(post&.body, length: 30) %></td>
+          <td><%= post&.category %></td>
+          <td><%= post&.top %></td>
+          <td><%= link_to post.user.name.nil? ? post.user&.email : post.user&.name.split.first, admin_user_path(post.user), class: 'text-purple' %></td>
           <td>
             <span class="<%= badge_color(post&.status) %>">
               <%= t("activerecord.attributes.statuses.#{post.status}") unless post.status.nil?%>

@@ -14,6 +14,8 @@ pt-BR:
       post:
         title: "Título"
         body: "Texto"
+        category: "Categoria"
+        top: "Top list"
         name: "Nome"
       comment:
         body: "Comentário"

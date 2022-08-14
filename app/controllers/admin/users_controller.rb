@@ -12,7 +12,7 @@ class Admin::UsersController < ApplicationController
       values[:name] = "%#{params[:name].to_s.downcase}%"
     end
     query = [conditions.join(' AND '), values] unless values.empty?
-    @users = User.where(query).order('created_at DESC').paginate(page: params[:page], per_page: 10)
+    @users = User.where(query).order('created_at DESC').paginate(page: params[:page], per_page: 8)
   end
   # ====================================================================================================================
   def show

@@ -8,6 +8,8 @@
     <tr class="align-items-center">
       <th><%= t('activerecord.attributes.post.title') %></th>
       <th><%= t('activerecord.attributes.post.body') %></th>
+      <th><%= t('activerecord.attributes.post.category') %></th>
+      <th><%= t('activerecord.attributes.post.top') %></th>
       <th><%= t('post.author') %></th>
       <th class="text-center" width="80px"><%= t('general.actions') %></th>
     </tr>
@@ -17,6 +19,8 @@
     <tr>
       <td><%= post&.title %></td>
       <td><%= truncate(post&.body, length: 70) %></td>
+      <td><%= post&.category %></td>
+      <td class="text-center"><%= post&.top %></td>
       <td><%= link_to post.user.name.nil? ? post.user&.email : post.user&.name.split.first, admin_user_path(post.user), class: 'text-purple' %></td>
       <td class="right">
           <%= link_to fa_icon("eye"), admin_post_path(post), class: "btn btn-xs btn-success" %>

@@ -16,17 +16,17 @@ namespace :create do
   # ====================================================================================================================
   desc "Seed Post"
   task post: :environment do
-    fake_title = Faker::Lorem.sentence(nb=3)
-    fake_body = Faker::Lorem.sentence(nb=300)
-    12.times do |i|
-      posts = Post.create(
-        title: fake_title,
-        body: fake_body,
+    categories = [ "Gráfica", "Tecnologia", "Financeiro", "Cultura" ]
+    15.times do |i|
+      post = Post.find_or_create_by!(
+        title: Faker::Lorem.sentence(nb=3),
+        body: Faker::Lorem.sentence(nb=300),
         user_id: rand(1..13),
         status: rand(0..1),
+        category: categories[rand(0..3)],
         top: rand(1..10)
       )
-      posts.save ? "Post criado com sucesso." : "Erro ao criar post: #{posts.errors.full_messages}."
+      puts post.save ? "Post ID:#{post.id} criado." : "Erro ao criar post: #{post.errors.full_messages}."
     end
   end
 end
