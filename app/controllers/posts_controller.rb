@@ -13,7 +13,7 @@ class PostsController < ApplicationController
       values[:title] = "%#{params[:title].to_s.downcase}%"
     end
     query = [conditions.join(' AND '), values] unless values.empty?
-    @posts = Post.where(query).where(status: :published).order("id DESC").paginate(page: params[:page], per_page: 3)
+    @posts = Post.where(query).where(status: :published).order("id DESC").paginate(page: params[:page], per_page: 5)
   end
   # ====================================================================================================================
   def show
@@ -29,19 +29,19 @@ class PostsController < ApplicationController
   end
   # ====================================================================================================================
   def culture
-    @culture = Post.where(category: "Cultura")
+    @culture = Post.where(category: "Cultura").order("id DESC").paginate(page: params[:page], per_page: 3)
   end
   # ====================================================================================================================
   def graphic
-    @graphic = Post.where(category: "Gráfica")
+    @graphic = Post.where(category: "Gráfica").order("id DESC").paginate(page: params[:page], per_page: 3)
   end
   # ====================================================================================================================
   def financial
-    @financial = Post.where(category: "Financeiro")
+    @financial = Post.where(category: "Financeiro").order("id DESC").paginate(page: params[:page], per_page: 3)
   end
   # ====================================================================================================================
   def technology
-    @technology = Post.where(category: "Tecnologia")
+    @technology = Post.where(category: "Tecnologia").order("id DESC").paginate(page: params[:page], per_page: 3)
   end
   # ====================================================================================================================
   def create

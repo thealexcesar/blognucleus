@@ -1,6 +1,10 @@
 <div class="text-purple d-flex justify-content-between align-items-center">
   <h1 class="mt-4"><%= t('title.posts') %></h1>
-  <%= link_to new_model, new_post_path, class: 'btn btn-primary mt-3' if signed_in && current_user.user_type == "admin" %>
+  <% if signed_in? %>
+    <% if current_user.user_type == "admin" %>
+      <%= link_to new_model, new_post_path, class: 'btn btn-primary mt-3' %>
+    <% end %>
+  <% end %>
 </div>
 <hr class="post-title margin-hr">
 <table class="table table-stripped">
@@ -44,8 +48,8 @@
   </tbody>
 
 </table>
-<div class="d-flex justify-content-end">
-  <div class="style-pagination">
+<div class="mb-5 d-flex justify-content-end">
+  <div class="mb-5 style-pagination">
     <%= will_paginate @posts, previous_label: fa_icon('angle-left', text: t('will_paginate.prev')), next_label: t('will_paginate.next', icon: fa_icon('angle-right')) %>
   </div>
 </div>

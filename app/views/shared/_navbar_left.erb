@@ -3,22 +3,22 @@
     <h5 class="ms-2"><%= t('activerecord.attributes.post.category.other') %></h5>
     <ul class="nav flex-column nav-pills">
       <li class="nav-item">
-        <%= link_to t('activerecord.attributes.post.categories.culture'),
-                    culture_posts_url, class: "nav-link #{"active" if params[:controller] == "admin/posts"}"
-        %>
+        <%= link_to t('activerecord.attributes.post.categories.technology'),
+                    technology_posts_url, class: "nav-link #{"active" if params[:action] == "technology"}"%>
       </li>
       <li class="nav-item">
         <%= link_to t('activerecord.attributes.post.categories.financial'),
-                    financial_posts_url, class: "nav-link #{"active" if params[:controller] == "admin/posts"}"
+                    financial_posts_url, class: "nav-link #{"active" if params[:action] == "financial"}"
         %>
       </li>
       <li class="nav-item">
         <%= link_to t('activerecord.attributes.post.categories.graphic'),
-                    graphic_posts_url, class: "nav-link #{"active" if params[:controller] == "admin/users"}"%>
+                    graphic_posts_url, class: "nav-link #{"active" if params[:action] == "graphic"}"%>
       </li>
       <li class="nav-item">
-        <%= link_to t('activerecord.attributes.post.categories.technology'),
-                    technology_posts_url, class: "nav-link #{"active" if params[:controller] == "admin/main"}"%>
+        <%= link_to t('activerecord.attributes.post.categories.culture'),
+                    culture_posts_url, class: "nav-link #{"active" if params[:action] == "culture"}"
+        %>
       </li>
     </ul>
   </div>

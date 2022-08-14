@@ -312,7 +312,7 @@ pt-BR:
     am: 'am'
     formats:
       default: "%a, %d de %B de %Y, %H:%M:%S %z"
-      default_short: "%d de %B de %Y, %H:%M"
+      default_short: "%d de %B de %Y"
       long: "%d/%m/%Y às %H:%M"
       short: "%d/%m/%Y"
     pm: 'pm'
