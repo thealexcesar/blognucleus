@@ -14,7 +14,14 @@ pt-BR:
       post:
         title: "Título"
         body: "Texto"
-        category: "Categoria"
+        category:
+          one: "Categoria"
+          other: "Categorias"
+        categories:
+          culture: "Cultura"
+          financial: "Financeiro"
+          graphic: "Gráfica"
+          technology: "Tecnologia"
         top: "Top list"
         name: "Nome"
       comment:
@@ -289,6 +296,7 @@ pt-BR:
   post:
     author: "Autor"
     see_more: "Ver mais..."
+    top: "Top Posts"
   support:
     array:
       last_word_connector: ", e "
@@ -304,6 +312,7 @@ pt-BR:
     am: 'am'
     formats:
       default: "%a, %d de %B de %Y, %H:%M:%S %z"
+      default_short: "%d de %B de %Y, %H:%M"
       long: "%d/%m/%Y às %H:%M"
       short: "%d/%m/%Y"
     pm: 'pm'

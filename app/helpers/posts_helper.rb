@@ -8,4 +8,8 @@ module PostsHelper
       "#{badge}-primary"
     end
   end
+  # ====================================================================================================================
+  def post_categories # todo: most viwed!
+    Post.all.where('top < 6').order('top ASC')
+  end
 end

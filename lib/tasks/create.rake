@@ -24,7 +24,7 @@ namespace :create do
         user_id: rand(1..13),
         status: rand(0..1),
         category: categories[rand(0..3)],
-        top: rand(1..10)
+        top: rand(1..5)
       )
       puts post.save ? "Post ID:#{post.id} criado." : "Erro ao criar post: #{post.errors.full_messages}."
     end

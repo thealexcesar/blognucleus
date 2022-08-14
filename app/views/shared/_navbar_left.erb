@@ -1,1 +1,40 @@
-<h1>menu TODO </h1>
+<nav>
+  <div class="border border-2 p-2 bg-gray">
+    <h5 class="ms-2"><%= t('activerecord.attributes.post.category.other') %></h5>
+    <ul class="nav flex-column nav-pills">
+      <li class="nav-item">
+        <%= link_to t('activerecord.attributes.post.categories.culture'),
+                    culture_posts_url, class: "nav-link #{"active" if params[:controller] == "admin/posts"}"
+        %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('activerecord.attributes.post.categories.financial'),
+                    financial_posts_url, class: "nav-link #{"active" if params[:controller] == "admin/posts"}"
+        %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('activerecord.attributes.post.categories.graphic'),
+                    graphic_posts_url, class: "nav-link #{"active" if params[:controller] == "admin/users"}"%>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('activerecord.attributes.post.categories.technology'),
+                    technology_posts_url, class: "nav-link #{"active" if params[:controller] == "admin/main"}"%>
+      </li>
+    </ul>
+  </div>
+  <div class="mt-4 border border-2 p-2 bg-gray">
+    <h5 class="ms-2"><%= t('post.top') %></h5>
+    <ul>
+      <li class="nav-item mb-5">
+        <% i = 0 %>
+        <% post_categories.each do |c| %>
+          <div class="ps-2 py-1">
+            <span class="h5 font-bold"><%= i+=1 %> &#160;</span>
+            <span><%= c.title %></span>
+            <p><small style="color: lightslategray"><%= l(c.created_at, format: :default_short) %></small></p>
+          </div>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
