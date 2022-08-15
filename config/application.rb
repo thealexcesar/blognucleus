@@ -40,6 +40,6 @@ module Blognucleus
     I18n.default_locale = "pt-BR"
     config.encoding = "utf-8"
 
-    config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
+    # config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
   end
 end

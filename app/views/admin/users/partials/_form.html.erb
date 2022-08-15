@@ -1,5 +1,5 @@
 <% url_form = @user.new_record? ? admin_users_path : admin_user_path(id: user) %>
-<%= form_for(@user, url: url_form, html: { class: "form-user open-loading-submit", role: "form"}) do |f| %>
+<%= form_for(user, url: url_form, html: { class: "form-user open-loading-submit", role: "form"}) do |f| %>
   <div class="form-group mt-3">
     <label><%= t('general.name') %>:</label>
     <%= f.text_field :name, class: "form-control", type: "text", placeholder: t('general.name') %>

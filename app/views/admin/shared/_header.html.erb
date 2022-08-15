@@ -21,7 +21,7 @@
   <div class="navbar-nav ms-auto">
     <div class=" in">
       <% if params[:action] == "index" && params[:controller] == "admin/users" || params[:controller] == "admin/posts" || params[:controller] == "posts" %>
-        <form role="search" class="app-search d-none d-md-block me-2">
+        <form role="search" class="app-search d-none d-md-block me-3">
           <%= get_filter %> <a href="" class="active"> <i class="fa fa-search me-4"></i> </a>
         </form>
       <% end %>
@@ -49,7 +49,5 @@
       </ul>
     </div>
   </div>
-
-</div>
 
 </div>

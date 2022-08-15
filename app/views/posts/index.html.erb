@@ -1,5 +1,5 @@
-<div class="container text-purple d-flex justify-content-between align-items-center">
-  <h1 class="mt-4"><%= t('title.posts') %></h1>
+<div class="text-purple d-flex justify-content-between align-items-center">
+  <h2 class="ps-0 mt-4 text-dark"><%= t('title.posts') %></h2>
   <%= link_to new_model, new_post_path, class: 'btn btn-primary mt-3'  if signed_in? %>
 </div>
 <hr class="post-title margin-hr">
