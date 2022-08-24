@@ -6,13 +6,7 @@ class Admin::PostsController < ApplicationController
   layout 'admin'
   # ====================================================================================================================
   def index
-    conditions = []
-    values = {}
-    unless params[:title].blank?
-      conditions << 'LOWER("title") LIKE :title'
-      values[:title] = "%#{params[:title].to_s.downcase}%"
-    end
-    query = [conditions.join(' AND '), values] unless values.empty?
+    query = Post.filter params
     @posts = Post.where(query).order("created_at DESC").paginate(page: params[:page], per_page: 10)
   end
   # ====================================================================================================================

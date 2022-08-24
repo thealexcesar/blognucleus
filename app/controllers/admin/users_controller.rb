@@ -5,13 +5,7 @@ class Admin::UsersController < ApplicationController
   layout 'admin'
   # ====================================================================================================================
   def index
-    conditions = []
-    values = {}
-    unless params[:name].blank?
-      conditions << 'LOWER("name") LIKE :name'
-      values[:name] = "%#{params[:name].to_s.downcase}%"
-    end
-    query = [conditions.join(' AND '), values] unless values.empty?
+    query = User.filter params
     @users = User.where(query).order('created_at DESC').paginate(page: params[:page], per_page: 8)
   end
   # ====================================================================================================================

@@ -12,4 +12,17 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable
+
+  # ====================================================================================================================
+  private
+
+  def self.filter params
+    conditions = []
+    values = {}
+    unless params[:name].blank?
+      conditions << 'LOWER("name") LIKE :name'
+      values[:name] = "%#{params[:name].to_s.downcase}%"
+    end
+    return [conditions.join(' AND '), values] unless values.empty?
+  end
 end

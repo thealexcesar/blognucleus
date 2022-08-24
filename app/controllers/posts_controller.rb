@@ -6,13 +6,7 @@ class PostsController < ApplicationController
 
   # ====================================================================================================================
   def index
-    conditions = []
-    values = {}
-    unless params[:title].blank?
-      conditions << 'LOWER("title") LIKE :title'
-      values[:title] = "%#{params[:title].to_s.downcase}%"
-    end
-    query = [conditions.join(' AND '), values] unless values.empty?
+    query = Post.filter params
     @posts = Post.where(query).where(status: :published).order("id DESC").paginate(page: params[:page], per_page: 5)
   end
   # ====================================================================================================================

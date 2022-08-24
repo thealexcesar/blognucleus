@@ -9,4 +9,16 @@ class Post < ApplicationRecord
     self.status ||= :draft
   end
 
+  # ====================================================================================================================
+  private
+
+  def self.filter params
+    conditions = []
+    values = {}
+    unless params[:title].blank?
+      conditions << 'LOWER("title") LIKE :title'
+      values[:title] = "%#{params[:title].to_s.downcase}%"
+    end
+    return [conditions.join(' AND '), values] unless values.empty?
+  end
 end

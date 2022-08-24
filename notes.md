@@ -130,7 +130,7 @@ rails g migration AddColumnToUsers name:string
 rails g migration RemoveColumnNameFromPost
 ```
 # Add 'status' to Post
-rails g migration AddStatusToPost status:integer
+rails g **migration** AddStatusToPost status:integer
 ```
 
 Todo:
@@ -149,3 +149,6 @@ Todo:
 - [ ] (Admin) pode excluir o comentario
 
 [link admin template](https://athemes.com/collections/free-bootstrap-admin-templates/)
+
+```
+
