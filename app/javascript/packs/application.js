@@ -17,3 +17,6 @@ function end_load_alerts_top() {
     $(".alert_top_loading").remove();
 }
 
+
+require("trix")
+require("@rails/actiontext")
