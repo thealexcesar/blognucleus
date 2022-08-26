@@ -16,7 +16,7 @@ namespace :create do
   # ====================================================================================================================
   desc "Seed Post"
   task post: :environment do
-    categories = [ "Gráfica", "Tecnologia", "Financeiro", "Cultura" ]
+    categories = ["Gráfica","Tecnologia","Financeiro","Cultura"]
     15.times do |i|
       post = Post.find_or_create_by!(
         title: Faker::Lorem.sentence(nb=3),

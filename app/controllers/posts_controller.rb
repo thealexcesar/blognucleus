@@ -1,13 +1,13 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [ :update, :destroy, :destroy_comment  ], except: :index
   before_action :require_user, :admin?, only: [ :update, :destroy, :destroy_comment  ], except: :index
-  before_action :set_post, only: [ :show, :edit, :update, :create_comment, :destroy, :destroy_comment ]
+  before_action :set_post, only: [ :author_posts, :show, :edit, :update, :create_comment, :destroy, :destroy_comment ]
   before_action :set_comment, only: [ :show, :create_comment ]
 
   # ====================================================================================================================
   def index
     query = Post.filter params
-    @posts = Post.where(query).where(status: :published).order("id DESC").paginate(page: params[:page], per_page: 5)
+    @posts = Post.where(query).where(status: :published).order("created_at DESC").paginate(page: params[:page], per_page: 5)
   end
   # ====================================================================================================================
   def show
@@ -23,19 +23,24 @@ class PostsController < ApplicationController
   end
   # ====================================================================================================================
   def culture
-    @culture = Post.where(category: "Cultura").order("id DESC").paginate(page: params[:page], per_page: 3)
+    @culture = Post.where(category: "Cultura").order("created_at DESC").paginate(page: params[:page], per_page: 3)
   end
   # ====================================================================================================================
   def graphic
-    @graphic = Post.where(category: "Gráfica").order("id DESC").paginate(page: params[:page], per_page: 3)
+    @graphic = Post.where(category: "Gráfica").order("created_at DESC").paginate(page: params[:page], per_page: 3)
   end
   # ====================================================================================================================
   def financial
-    @financial = Post.where(category: "Financeiro").order("id DESC").paginate(page: params[:page], per_page: 3)
+    @financial = Post.where(category: "Financeiro").order("created_at DESC").paginate(page: params[:page], per_page: 3)
   end
   # ====================================================================================================================
   def technology
-    @technology = Post.where(category: "Tecnologia").order("id DESC").paginate(page: params[:page], per_page: 3)
+    @technology = Post.where(category: "Tecnologia").order("created_at DESC").paginate(page: params[:page], per_page: 3)
+  end
+  # ====================================================================================================================
+  def author_posts
+    @user = @post.user
+    @posts = @user.posts.order("created_at DESC").paginate(page: params[:page], per_page: 5)
   end
   # ====================================================================================================================
   def create
@@ -71,6 +76,7 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
   # ====================================================================================================================
   # COMMENT ============================================================================================================
   # ====================================================================================================================
@@ -99,22 +105,20 @@ class PostsController < ApplicationController
   end
   # FIM COMMENT ========================================================================================================
 
-
   # ====================================================================================================================
   # PRIVATE ============================================================================================================
   # ====================================================================================================================
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find_by_id params[:id]
-    end
-    def set_comment
-      @comment = Comment.find_by_id params[:post_id]
-    end
-    def post_params
-      params.require(:post).permit(:title, :body, :user_id, :status)
-    end
-    def comment_params
-      params.require(:comment).permit(:name, :body, :post_id)
-    end
+  def set_post
+    @post = Post.find_by_id params[:id]
+  end
+  def set_comment
+    @comment = Comment.find_by_id params[:post_id]
+  end
+  def post_params
+    params.require(:post).permit(:title, :body, :user_id, :status)
+  end
+  def comment_params
+    params.require(:comment).permit(:name, :body, :post_id)
+  end
 end

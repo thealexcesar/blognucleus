@@ -11,7 +11,9 @@
     <%= link_to t('post.see_more'), post, class: 'text-purple' %>
   </span>
   <span class="pull-right">
-    <%= t('post.author') %>: <%= link_to post.user.name.nil? ? post.user&.email : post.user&.name, '#', class: 'text-purple' %>
+    <%= t('post.author') %>:
+    <%= link_to post.user&.name, author_posts_path(id: post), class: 'text-purple'
+    %>
   </span>
   <br>
   <p><hr class="post margin-hr"></p>

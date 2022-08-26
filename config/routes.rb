@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   # resources :posts
   resources :posts do
     get 'order_by', on: :collection
-
     get 'culture', on: :collection
     get 'graphic', on: :collection
     get 'financial', on: :collection
@@ -23,12 +22,7 @@ Rails.application.routes.draw do
     post 'create_comment', on: :collection
     delete 'destroy_comment', on: :collection
   end
-
+  get 'author_posts', to: 'posts#author_posts'
 
   devise_for :users
-  # devise_scope :user do
-  #   get '/users/sign_out' => 'devise/sessions#destroy'
-  # end
-
-  # mount Ckeditor::Engine => '/ckeditor'
 end
