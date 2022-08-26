@@ -24,4 +24,8 @@ class Post < ApplicationRecord
     end
     return [conditions.join(' AND '), values] unless values.empty?
   end
+
+  def self.get_category_post params, category
+    self.where(category: category).order("created_at DESC").paginate(page: params[:page], per_page: 3)
+  end
 end

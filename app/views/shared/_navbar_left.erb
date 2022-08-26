@@ -4,20 +4,22 @@
     <ul class="nav flex-column nav-pills">
       <li class="nav-item">
         <%= link_to t('activerecord.attributes.post.categories.technology'),
-                    technology_posts_url, class: "nav-link #{"active" if params[:action] == "technology"}"%>
+                    categories_path(category: "Tecnologia"), class: "nav-link #{"active" if params[:category] == "Tecnologia"}"
+        %>
       </li>
       <li class="nav-item">
         <%= link_to t('activerecord.attributes.post.categories.financial'),
-                    financial_posts_url, class: "nav-link #{"active" if params[:action] == "financial"}"
+                    categories_path(category: "Financeiro"), class: "nav-link #{"active" if params[:category] == "Financeiro"}"
         %>
       </li>
       <li class="nav-item">
         <%= link_to t('activerecord.attributes.post.categories.graphic'),
-                    graphic_posts_url, class: "nav-link #{"active" if params[:action] == "graphic"}"%>
+                    categories_path(category: "Gráfica"), class: "nav-link #{"active" if params[:category] == "Gráfica"}"
+        %>
       </li>
       <li class="nav-item">
         <%= link_to t('activerecord.attributes.post.categories.culture'),
-                    culture_posts_url, class: "nav-link #{"active" if params[:action] == "culture"}"
+                    categories_path(category: "Cultura"), class: "nav-link #{"active" if params[:category] == "Cultura"}"
         %>
       </li>
     </ul>

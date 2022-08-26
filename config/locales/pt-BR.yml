@@ -295,6 +295,7 @@ pt-BR:
         delimiter: "."
   post:
     author: "Autor"
+    post_of: "Posts de %{author}"
     see_more: "Ver mais..."
     top: "Top Posts"
   support:

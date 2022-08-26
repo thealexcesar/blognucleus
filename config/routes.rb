@@ -14,15 +14,12 @@ Rails.application.routes.draw do
   # resources :posts
   resources :posts do
     get 'order_by', on: :collection
-    get 'culture', on: :collection
-    get 'graphic', on: :collection
-    get 'financial', on: :collection
-    get 'technology', on: :collection
-
     post 'create_comment', on: :collection
     delete 'destroy_comment', on: :collection
   end
+
   get 'author_posts', to: 'posts#author_posts'
+  get 'categories', to: 'posts#categories'
 
   devise_for :users
 end

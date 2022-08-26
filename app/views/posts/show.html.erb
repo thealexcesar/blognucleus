@@ -15,7 +15,7 @@
       <%= @post.status %>
     </p>
     <span class="pull-right small">
-          <%= t('post.author') %>: <%= link_to @post.user.name.nil? ? @post.user&.email : @post.user&.name, root_path, class: 'text-purple' unless @post.nil?%>
+          <%= t('post.author') %>: <%= link_to @post.user&.name, author_posts_path(id: @post), class: 'text-purple' unless @post.nil?%>
     </span>
     <br>
     <p> <hr class="post margin-hr"> </p>

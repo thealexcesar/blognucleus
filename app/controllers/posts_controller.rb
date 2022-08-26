@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [ :update, :destroy, :destroy_comment  ], except: :index
   before_action :require_user, :admin?, only: [ :update, :destroy, :destroy_comment  ], except: :index
-  before_action :set_post, only: [ :author_posts, :show, :edit, :update, :create_comment, :destroy, :destroy_comment ]
+  before_action :set_post, only: %i[ author_posts show edit update create_comment destroy destroy_comment ]
   before_action :set_comment, only: [ :show, :create_comment ]
 
   # ====================================================================================================================
@@ -19,23 +19,10 @@ class PostsController < ApplicationController
     @post = Post.new
   end
   # ====================================================================================================================
-  def edit
-  end
+  def edit;end
   # ====================================================================================================================
-  def culture
-    @culture = Post.where(category: "Cultura").order("created_at DESC").paginate(page: params[:page], per_page: 3)
-  end
-  # ====================================================================================================================
-  def graphic
-    @graphic = Post.where(category: "Gráfica").order("created_at DESC").paginate(page: params[:page], per_page: 3)
-  end
-  # ====================================================================================================================
-  def financial
-    @financial = Post.where(category: "Financeiro").order("created_at DESC").paginate(page: params[:page], per_page: 3)
-  end
-  # ====================================================================================================================
-  def technology
-    @technology = Post.where(category: "Tecnologia").order("created_at DESC").paginate(page: params[:page], per_page: 3)
+  def categories
+    @posts = params[:category].blank? ? Post.all.order("created_at DESC").paginate(page: params[:page], per_page: 5) : Post.get_category_post(params, params[:category])
   end
   # ====================================================================================================================
   def author_posts
@@ -112,12 +99,15 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find_by_id params[:id]
   end
+  # ====================================================================================================================
   def set_comment
     @comment = Comment.find_by_id params[:post_id]
   end
+  # ====================================================================================================================
   def post_params
     params.require(:post).permit(:title, :body, :user_id, :status)
   end
+  # ====================================================================================================================
   def comment_params
     params.require(:comment).permit(:name, :body, :post_id)
   end

@@ -1,5 +1,5 @@
 <div class="text-purple d-flex justify-content-between align-items-center">
-  <h2 class="ps-0 mt-4 text-dark">Posts de <%= @user.name.split.first %></h2>
+  <h2 class="ps-0 mt-4 text-dark"><%= t('post.post_of', author: @user.name.split.first) %></h2>
   <%= link_to new_model, new_post_path, class: 'btn btn-primary mt-3' if signed_in? %>
 </div>
 <hr class="post-title margin-hr">
@@ -10,11 +10,10 @@
     <%= truncate(post&.body, length: 300) %><br>
       <%= link_to t('post.see_more'), post, class: 'text-purple' %>
   </span>
-    <span class="pull-right">
-    <%= t('post.author') %>: <%= link_to post.user&.name, author_posts_path(id: post), class: 'text-purple'%>
-  </span>
-    <br>
-    <p> <hr class="post margin-hr"> </p>
+  <span class="pull-right">
+  <%= t('post.author') %>: <%= link_to post.user&.name, author_posts_path(id: post), class: 'text-purple'%>
+  </span> <br />
+  <p> <hr class="post margin-hr"> </p>
   </div>
   <% if signed_in? && current_user.user_type == :admin %>
     <h2><%= link_to t('btn.edit'), edit_post_path(post) %></h2>
