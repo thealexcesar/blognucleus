@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [ :update, :destroy, :destroy_comment  ], except: :index
   before_action :require_user, :admin?, only: [ :update, :destroy, :destroy_comment  ], except: :index
-  before_action :set_post, only: %i[ author_posts show edit update create_comment destroy destroy_comment ]
-  before_action :set_comment, only: [ :show, :create_comment ]
+  before_action :set_post, only: %i[ newest_comments author_posts show edit update create_comment destroy destroy_comment ]
+  before_action :set_comment, only: [:newest_comments, :show, :create_comment ]
 
   # ====================================================================================================================
   def index
@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   # ====================================================================================================================
   def show
     @comment = @post.comments.new unless @post.blank?
-    @comments = Comment.where(post_id: @post).order("created_at ASC")
+    @comments = Comment.where(post_id: @post).order(params[:sort].blank? ? "created_at ASC" : "created_at DESC")
   end
   # ====================================================================================================================
   def new

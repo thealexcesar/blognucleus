@@ -2,27 +2,4 @@
     <h1 class="mt-4"><%= @posts.count %> <%= Post.model_name.human(count: @posts.count) %></h1>
   <%= link_to new_model, new_post_path, class: 'btn btn-primary mt-3'  if signed_in? %>
 </div>
-<hr class="post-title margin-hr">
-<% @posts.each do |post| %>
-  <div>
-    <p><%= post&.title %></p>
-    <span>
-    <%= truncate(post&.body, length: 300) %><br>
-      <%= link_to t('post.see_more'), post, class: 'text-purple' %>
-  </span>
-    <span class="pull-right">
-    <%= t('post.author') %>: <%= link_to post.user&.name, author_posts_path(id: post), class: 'text-purple' %>
-  </span>g
-    <br>
-    <p><hr class="post margin-hr"></p>
-  </div>
-  <% if signed_in? && current_user.user_type == :admin %>
-    <h2><%= link_to t('btn.edit'), edit_post_path(post) %></h2>
-    <h2><%= link_to t('btn.delete'), post, method: :delete, data: { confirm: t('confirm.destroy') } %></h2>
-  <% end %>
-<% end %>
-<div class="d-flex justify-content-end">
-  <div class="style-pagination">
-    <%= will_paginate @posts, previous_label: fa_icon('angle-left', text: t('will_paginate.prev')), next_label: t('will_paginate.next', icon: fa_icon('angle-right')) %>
-  </div>
-</div>
+<%= render 'posts/partials/posts', posts: @posts %>

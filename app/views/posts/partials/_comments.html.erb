@@ -13,7 +13,7 @@
               <p class="message-date"> <%= l(comment&.created_at, format: :long) %> </p>
             </div>
             <div class="d-flex justify-content-between">
-              <span class="message-content"> <%= comment&.body %> </span>
+              <span class="message-content"> <%= comment&.body.html_safe %> </span>
               <% if signed_in? && current_user.user_type == :admin %>
                 <%= link_to fa_icon("trash"), destroy_comment_posts_path(id: comment), class: "btn btn-sm btn-danger", method: :delete, data: { confirm: t('confirm.destroy') } %>
               <% end %>

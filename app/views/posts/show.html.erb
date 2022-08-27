@@ -21,10 +21,8 @@
     <p> <hr class="post margin-hr"> </p>
     <div class="d-flex justify-content-between">
       <h4><%= @post.comments&.count %> <%= @post&.comments.model_name.human(count: @post&.comments.count).upcase %></h4>
-      <span class="small"><%= link_to "#" do %>
-        <%= t('general.newest') %>
-        <%= fa_icon('angle-down') %>
-        <% end %>
+      <span class="small">
+        <%= link_to t('general.newest'), sort: 'created_at DESC', class: '', method: :post %>
       </span>
     </div>
     <%= render 'posts/partials/comments', comments: @comments %>
