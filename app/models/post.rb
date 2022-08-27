@@ -13,8 +13,6 @@ class Post < ApplicationRecord
   end
 
   # ====================================================================================================================
-  private
-
   def self.filter params
     conditions = []
     values = {}

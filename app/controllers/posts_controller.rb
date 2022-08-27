@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   # ====================================================================================================================
   def show
     @comment = @post.comments.new unless @post.blank?
-    @comments = Comment.where(post_id: @post).order(params[:sort].blank? ? "created_at ASC" : "created_at DESC")
+    @comments = Comment.where(post_id: @post).order(params[:sort] ||= 'created_at ASC')
   end
   # ====================================================================================================================
   def new
